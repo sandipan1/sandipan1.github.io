@@ -22,16 +22,16 @@ plugins:
   - search
   - blog:
       blog_toc: true
-      authors_file: "{blog}/.authors.yml"
+      authors_file: "blog/.authors.yml"
       post_url_format: "{slug}"
-  - rss:
-      match_path: docs/blog/posts/.*
-      date_from_meta:
-        as_creation: date
-      categories:
-        - categories
-        - tags
-      use_git: false
+  # - rss:
+  #     match_path: docs/blog/posts/.*
+  #     date_from_meta:
+  #       as_creation: date
+  #     categories:
+  #       - categories
+  #       - tags
+  #     use_git: false
   - minify:
       minify_html: true
   - mkdocstrings:
