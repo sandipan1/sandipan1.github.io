@@ -1,0 +1,71 @@
+site_name: Sandipan Haldar
+site_url: https://www.sandipan1.github.io
+theme:
+  name: material
+  features:
+    - content.code.copy
+    - content.code.annotate
+    - navigation.tabs
+    - toc.follow
+    - navigation.path
+  custom_dir: docs/overrides
+nav:
+  - About me: index.md
+  - Blog:
+      - index: blog/index.md
+  - Work with me: work.md
+  - Newsletter: newsletter.md
+  - Talks: talk.md
+
+plugins:
+  - search
+  - blog:
+      blog_toc: true
+      authors_file: "{blog}/.authors.yml"
+      post_url_format: "{slug}"
+  - rss:
+      match_path: docs/blog/posts/.*
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
+      use_git: false
+  - minify:
+      minify_html: true
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            members_order: alphabetical
+            allow_inspection: true
+            show_bases: true
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+# extra: 
+  # analytics:
+    # provider: google
+    # property: G-MM8QMY5JWN
+use_directory_urls: false
