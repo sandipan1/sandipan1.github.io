@@ -32,4 +32,5 @@ jobs:
             mkdocs-material-
       - name: Install dependencies
         run: uv pip sync --system pyproject.toml
+        run: uv pip install importlib_metadata
       - run: mkdocs gh-deploy --force
