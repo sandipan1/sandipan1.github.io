@@ -58,3 +58,5 @@ The key pillars of a evaluation framework :
 
    Consider this common scenario: Your team is debating whether to add a re-ranker to your retrieval pipeline. The re-ranker promises better results but adds *latency and cost*. Without objective metrics, you might invest in unnecessary complexity.
 
+   
+
