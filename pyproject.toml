@@ -57,5 +57,6 @@ dependencies = [
     "tinycss2==1.4.0",
     "urllib3==2.2.3",
     "watchdog==6.0.0",
-    "webencodings==0.5.1",]
+    "webencodings==0.5.1",
+]
 
