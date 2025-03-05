@@ -2,42 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://www.sandipan1.github.io/index.html</loc>
-         <lastmod>2025-03-03</lastmod>
+         <lastmod>2025-03-05</lastmod>
     </url>
     <url>
          <loc>https://www.sandipan1.github.io/newsletter.html</loc>
-         <lastmod>2025-03-03</lastmod>
+         <lastmod>2025-03-05</lastmod>
     </url>
     <url>
          <loc>https://www.sandipan1.github.io/talk.html</loc>
-         <lastmod>2025-03-03</lastmod>
+         <lastmod>2025-03-05</lastmod>
     </url>
     <url>
          <loc>https://www.sandipan1.github.io/work.html</loc>
-         <lastmod>2025-03-03</lastmod>
+         <lastmod>2025-03-05</lastmod>
     </url>
     <url>
          <loc>https://www.sandipan1.github.io/blog/index.html</loc>
-         <lastmod>2025-03-03</lastmod>
+         <lastmod>2025-03-05</lastmod>
     </url>
     <url>
          <loc>https://www.sandipan1.github.io/blog/what-happened-in-2024.html</loc>
-         <lastmod>2025-03-03</lastmod>
+         <lastmod>2025-03-05</lastmod>
     </url>
     <url>
-         <loc>https://www.sandipan1.github.io/blog/archive/2024.html</loc>
-         <lastmod>2025-03-03</lastmod>
-    </url>
-    <url>
-         <loc>https://www.sandipan1.github.io/blog/category/career.html</loc>
-         <lastmod>2025-03-03</lastmod>
+         <loc>https://www.sandipan1.github.io/blog/archive/2025.html</loc>
+         <lastmod>2025-03-05</lastmod>
     </url>
     <url>
          <loc>https://www.sandipan1.github.io/blog/category/machine-learning.html</loc>
-         <lastmod>2025-03-03</lastmod>
+         <lastmod>2025-03-05</lastmod>
     </url>
     <url>
-         <loc>https://www.sandipan1.github.io/blog/category/personal-development.html</loc>
-         <lastmod>2025-03-03</lastmod>
+         <loc>https://www.sandipan1.github.io/blog/category/ai-engineering.html</loc>
+         <lastmod>2025-03-05</lastmod>
     </url>
 </urlset>

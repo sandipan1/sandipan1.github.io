@@ -32,8 +32,8 @@ plugins:
   #       - categories
   #       - tags
   #     use_git: false
-  - minify:
-      minify_html: true
+  # - minify:
+  #     minify_html: true
   - mkdocstrings:
       handlers:
         python:
