@@ -31,4 +31,11 @@ jobs:
             mkdocs-material-
       - name: Install dependencies
         run: uv pip sync --system pyproject.toml
-      - run: mkdocs gh-deploy --force
+      - name: Disable Jekyll
+        run: touch .nojekyll
+
+      - name: Verify MkDocs Installation
+        run: mkdocs --version
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
