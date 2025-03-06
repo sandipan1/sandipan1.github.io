@@ -1,5 +1,5 @@
 ---
-title: What Happened in 2024
+title: Building Your RAG Evaluation Foundation
 date: 2025-03-04
 description: A Comprehensive RAG Evaluation
 categories:
@@ -10,7 +10,6 @@ authors:
 ---
 
 
-## Building Your RAG Evaluation Foundation
 
 Evaluating RAG systems is challenging, especially when you're just starting out. This notebook introduces a practical approach to assessment using synthetic data generation - a crucial first step before diving into more complex metrics.
 
@@ -58,5 +57,5 @@ The key pillars of a evaluation framework :
 
    Consider this common scenario: Your team is debating whether to add a re-ranker to your retrieval pipeline. The re-ranker promises better results but adds *latency and cost*. Without objective metrics, you might invest in unnecessary complexity.
 
-   
+
 
