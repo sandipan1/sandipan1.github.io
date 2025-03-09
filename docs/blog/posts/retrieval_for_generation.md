@@ -37,8 +37,6 @@ Consider text-to-SQL generation. Before generating SQL, the system must first re
 
 The fundamental step is to create a dataset where each entry consists of an generated input (e.g., a prompt, a question) paired with its desired output (e.g., an answer, a summary, sql snippet). Now task of the retrieval system is to retrieve the SQL snippet from a query efficiently and accurately. By defining and tracking retrieval metrics like recall , MRR you can identify areas where the retrieval system is failing to find the correct SQL snippets for cetain type of queries which informs optimization effort like finetuning embedding model, experiment with different indexing
 
-```python
-```
 
 ### Key Benefits of Retrieval-First Approach
 
@@ -58,10 +56,6 @@ final_query = f"SELECT total_price, total_price + {calculate_tax('total_price', 
 
 
 
-
-
-```python
-```
 
 3. **Metrics-driven optimization**: Precision, recall, and MRR provide objective benchmarks and help ensure accurate and comprehensive infromation retrieval 
 4. **Few-shot enhancement**: A generation task can be greatly improved by including few-shot examples especially those of business specific edge cases or difficult to retrieve.
