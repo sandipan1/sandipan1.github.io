@@ -1,4 +1,17 @@
-# Stop Tweaking Prompts—Fix Your Retrieval and Win
+---
+title: Stop Tweaking Prompts—Fix Your Retrieval and Win
+date: 2025-03-06
+description: A Comprehensive RAG Evaluation
+categories:
+  - Machine Learning
+  - AI Engineering
+  - LLM
+  - RAG 
+authors:
+  - sandipan
+---
+
+
 
 ## The Hidden Business Metrics Driving AI Success (or Costly Failure)
 
