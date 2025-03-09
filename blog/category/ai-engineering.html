@@ -14,7 +14,7 @@
         <link rel="prev" href="../index.html">
       
       
-        <link rel="next" href="machine-learning.html">
+        <link rel="next" href="llm.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -561,18 +561,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#synthetic-generation" class="md-nav__link">
+  <a href="#stop-tweaking-promptsfix-your-retrieval-and-win" class="md-nav__link">
     <span class="md-ellipsis">
-      Synthetic Generation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#building-your-rag-evaluation-foundation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Building Your RAG Evaluation Foundation
+      Stop Tweaking Prompts—Fix Your Retrieval and Win
     </span>
   </a>
   
@@ -596,11 +587,57 @@
   
   
     <li class="md-nav__item">
+      <a href="llm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="machine-learning.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="rag.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG
   </span>
   
 
@@ -712,18 +749,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#synthetic-generation" class="md-nav__link">
+  <a href="#stop-tweaking-promptsfix-your-retrieval-and-win" class="md-nav__link">
     <span class="md-ellipsis">
-      Synthetic Generation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#building-your-rag-evaluation-foundation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Building Your RAG Evaluation Foundation
+      Stop Tweaking Prompts—Fix Your Retrieval and Win
     </span>
   </a>
   
@@ -764,13 +792,15 @@
             in
             
               <a href="machine-learning.html" class="md-meta__link">Machine Learning</a>, 
-              <a href="ai-engineering.html" class="md-meta__link">AI Engineering</a></li>
+              <a href="ai-engineering.html" class="md-meta__link">AI Engineering</a>, 
+              <a href="llm.html" class="md-meta__link">LLM</a>, 
+              <a href="rag.html" class="md-meta__link">RAG</a></li>
         
         
           
           <li class="md-meta__item">
             
-              1 min read
+              5 min read
             
           </li>
         
@@ -779,114 +809,128 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="synthetic-generation"><a class="toclink" href="../synthetic-generation.html">Synthetic Generation</a></h2>
-<p>Synthetic Generation 
-s</p>
-    
-  </div>
-</article>  <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="../avatar.jpeg" alt="Sandipan Haldar">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-03-04 00:00:00">March 4, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="machine-learning.html" class="md-meta__link">Machine Learning</a>, 
-              <a href="ai-engineering.html" class="md-meta__link">AI Engineering</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              1 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="building-your-rag-evaluation-foundation"><a class="toclink" href="../building-your-rag-evaluation-foundation.html">Building Your RAG Evaluation Foundation</a></h2>
-<p>Evaluating RAG systems is challenging, especially when you're just starting out. This notebook introduces a practical approach to assessment using synthetic data generation - a crucial first step before diving into more complex metrics.</p>
-<h3 id="why-this-matters"><a class="toclink" href="../building-your-rag-evaluation-foundation.html#why-this-matters">Why This Matters</a></h3>
-<p>Traditional RAG evaluation focuses on generated content quality, but this approach has significant drawbacks:</p>
-<table>
-<thead>
-<tr>
-<th>Aspect</th>
-<th>Content Generation</th>
-<th>Retrieval Metrics</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Speed</td>
-<td>1-10s per test</td>
-<td>10-800ms per test</td>
-</tr>
-<tr>
-<td>Cost</td>
-<td>$100s per run</td>
-<td>Negligible</td>
-</tr>
-<tr>
-<td>Objectivity</td>
-<td>Subjective</td>
-<td>Quantitative</td>
-</tr>
-<tr>
-<td>Iteration Speed</td>
-<td>Hours</td>
-<td>Minutes</td>
-</tr>
-<tr>
-<td>Scale</td>
-<td>Limited</td>
-<td>Automated</td>
-</tr>
-</tbody>
-</table>
-<p>Instead, we'll focus on retrieval metrics that are:
-- Fast to compute (milliseconds vs seconds)
-- Objective and reproducible
-- Easy to automate
-- Cost-effective at scale</p>
-<h3 id="comprehensive-evaluation-framework"><a class="toclink" href="../building-your-rag-evaluation-foundation.html#comprehensive-evaluation-framework">Comprehensive Evaluation Framework</a></h3>
-<p>The key pillars of a evaluation framework :
-1. <strong>Synthetic Data Generation</strong>
-   - Create diverse, realistic test questions
-   - Generate comprehensive datasets without real user data
-   - Learn techniques for systematic question generation</p>
+    <h2 id="stop-tweaking-promptsfix-your-retrieval-and-win"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html">Stop Tweaking Prompts—Fix Your Retrieval and Win</a></h2>
+<h3 id="the-hidden-business-metrics-driving-ai-success-or-costly-failure"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#the-hidden-business-metrics-driving-ai-success-or-costly-failure">The Hidden Business Metrics Driving AI Success (or Costly Failure)</a></h3>
+<p>Are your AI generation systems consistently underperforming despite endless prompt tweaking? You're likely optimizing the wrong part of your pipeline. After analyzing  generation systems across industries, I've discovered an uncomfortable truth: most teams waste resources fine-tuning models and prompts while ignoring the foundation everything depends on—<strong>retrieval quality</strong>.</p>
+<h3 id="the-costly-mistake-most-ai-teams-make"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#the-costly-mistake-most-ai-teams-make">The Costly Mistake Most AI Teams Make</a></h3>
+<p>Your generation task is only as good as the information it works with. Yet most teams spend weeks optimizing LLM prompts while dedicating minimal effort to their retrieval systems. This fundamental mistake costs companies thousands in wasted compute and engineering hours.</p>
+<h4 id="common-tradeoffs-between-content-generation-retrieval"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#common-tradeoffs-between-content-generation-retrieval">Common Tradeoffs Between Content Generation &amp; Retrieval</a></h4>
+<ul>
+<li><strong>Speed</strong>: Content generation takes 1-10 seconds per test, while retrieval takes only 10-800ms.</li>
+<li><strong>Cost</strong>: Content generation can cost hundreds per run, whereas retrieval is negligible.</li>
+<li><strong>Objectivity</strong>: Content evaluation is subjective, while retrieval metrics are quantitative.</li>
+<li><strong>Iteration Speed</strong>: Content tuning takes hours, retrieval tuning takes minutes.</li>
+<li><strong>Scalability</strong>: Content evaluation is limited, retrieval can be automated.</li>
+</ul>
+<p>By focusing on retrieval first, you build a solid foundation that enhances everything else. Here’s why it matters and how to implement it systematically.</p>
+<h3 id="framing-generation-as-a-retrieval-problem"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#framing-generation-as-a-retrieval-problem">Framing Generation as a Retrieval Problem</a></h3>
+<p>Consider text-to-SQL generation. Before generating SQL, the system must first retrieve relevant context efficiently:</p>
+<p>The fundamental step is to create a dataset where each entry consists of an generated input (e.g., a prompt, a question) paired with its desired output (e.g., an answer, a summary, sql snippet). Now task of the retrieval system is to retrieve the SQL snippet from a query efficiently and accurately. By defining and tracking retrieval metrics like recall , MRR you can identify areas where the retrieval system is failing to find the correct SQL snippets for cetain type of queries which informs optimization effort like finetuning embedding model, experiment with different indexing</p>
+<h4 id="key-benefits-of-retrieval-first-approach"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#key-benefits-of-retrieval-first-approach">Key Benefits of Retrieval-First Approach</a></h4>
 <ol>
-<li><strong>Maintain Query Diversity</strong></li>
-<li>Identify different types of questions to test</li>
-<li>Cover various query patterns and edge cases</li>
-<li>
-<p>Build representative test scenarios</p>
-</li>
-<li>
-<p><strong>Evaluation Setup</strong></p>
-</li>
-<li>Establish measurement foundations</li>
-<li>Set up automated testing pipelines</li>
-<li>Create reproducible evaluation workflows</li>
+<li><strong>Early edge case detection</strong>: Identify potential failure points by analyzing retrieval errors before they impact production performance.</li>
+<li><strong>Business logic integration</strong>: Ensure that company-specific calculations, such as custom pricing rules or compliance constraints, are accurately retrieved and incorporated into query generation. For example, when handling tax computations, retrieving company-specific tax codes before generating SQL ensures compliance and accuracy:</li>
 </ol>
-<p>When building RAG systems, intuition isn't enough - we need objective metrics to guide our decisions. Teams often waste resources on complex architectures without clear evidence they outperform simpler approaches.</p>
-<h3 id="evaluating-and-comparing-different-retrieval-strategies"><a class="toclink" href="../building-your-rag-evaluation-foundation.html#evaluating-and-comparing-different-retrieval-strategies">Evaluating and Comparing different retrieval strategies</a></h3>
-<p>Consider this common scenario: Your team is debating whether to add a re-ranker to your retrieval pipeline. The re-ranker promises better results but adds <em>latency and cost</em>. Without objective metrics, you might invest in unnecessary complexity.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Example tax code for a specific company</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">def</span> <span class="nf">calculate_tax</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">tax_code</span><span class="p">):</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="n">tax_rates</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">}</span>  <span class="c1"># Different tax rules per company</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">tax_rates</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tax_code</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>  <span class="c1"># Default tax rate if code is unknown</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1"># Applying tax calculation in query generation</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">final_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SELECT total_price, total_price + </span><span class="si">{</span><span class="n">calculate_tax</span><span class="p">(</span><span class="s1">&#39;total_price&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">tax_code</span><span class="p">)</span><span class="si">}</span><span class="s2"> AS total_with_tax FROM orders&quot;</span>
+</span></code></pre></div>
+<ol>
+<li><strong>Metrics-driven optimization</strong>: Precision, recall, and MRR provide objective benchmarks and help ensure accurate and comprehensive infromation retrieval </li>
+<li><strong>Few-shot enhancement</strong>: A generation task can be greatly improved by including few-shot examples especially those of business specific edge cases or difficult to retrieve.</li>
+</ol>
+<h3 id="the-three-step-system-for-optimizing-retrieval"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#the-three-step-system-for-optimizing-retrieval">The Three-Step System for Optimizing Retrieval</a></h3>
+<h4 id="step-1-create-synthetic-test-data"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#step-1-create-synthetic-test-data">Step 1: Create Synthetic Test Data</a></h4>
+<p>Generate diverse test questions reflecting real user queries:</p>
+<p>Example input:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>challenging_examples = [&quot;SELECT * FROM sales WHERE amount &gt; 1000&quot;, &quot;SELECT COUNT(*) FROM users WHERE signup_date &gt; &#39;2024-01-01&#39;&quot;]
+</span></code></pre></div>
+<p>Example output:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>[{
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    &quot;question&quot;: &quot;How many users signed up after January 1, 2024?&quot;,
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    &quot;relevance&quot;: &quot;high&quot;
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>}, {
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    &quot;question&quot;: &quot;Show all sales transactions where the amount exceeds 1000.&quot;,
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    &quot;relevance&quot;: &quot;high&quot;
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>}]
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">from</span> <span class="nn">instructor</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kn">import</span> <span class="nn">random</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="k">class</span> <span class="nc">SyntheticQuestion</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="n">question</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="n">relevance</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="n">questions</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="k">for</span> <span class="n">sql_example</span> <span class="ow">in</span> <span class="n">challenging_examples</span><span class="p">:</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="n">constraints</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">,</span> <span class="s2">&quot;comparison&quot;</span><span class="p">])</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="n">question</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">structured_generate</span><span class="p">(</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>        <span class="n">SyntheticQuestion</span><span class="p">,</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>        <span class="n">prompt</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Generate a question for this SQL: </span><span class="si">{</span><span class="n">sql_example</span><span class="si">}</span><span class="s2">. Add </span><span class="si">{</span><span class="n">constraints</span><span class="si">}</span><span class="s2"> constraint.&quot;</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>    <span class="p">)</span>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>    <span class="n">questions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+</span></code></pre></div>
+<p>This ensures comprehensive test coverage without needing real user data.</p>
+<h4 id="step-2-define-meaningful-retrieval-metrics"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#step-2-define-meaningful-retrieval-metrics">Step 2: Define Meaningful Retrieval Metrics</a></h4>
+<ul>
+<li><strong>Precision\@K</strong>: How many retrieved items are relevant?</li>
+<li><em>improving precision makes sure we are not wasting resources and increasing latency by processing information which are irrelevant</em></li>
+<li><strong>Recall\@K</strong>: How many relevant items did we retrieve? </li>
+<li>&#x20;<em>By optimizing for recall, we ensure that the language model has access to all necessary information, which can lead to more accurate and reliable generated responses.</em></li>
+<li><strong>MRR (Mean Reciprocal Rank)</strong>: How highly ranked are the relevant items?</li>
+<li><em>if we want to display retrieved results as citations to users, we only show the highly ranked retrieved results to the user.</em> </li>
+</ul>
+<p>For most generation tasks, <strong>recall</strong> is critical—your LLM needs all necessary information to generate accurate responses.</p>
+<h4 id="step-3-build-your-evaluation-pipeline"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#step-3-build-your-evaluation-pipeline">Step 3: Build Your Evaluation Pipeline</a></h4>
+<p>For example, you want to improve performance and accuracy of your text-to-SQL system for your analytics engine.</p>
+<p>You want to evaluate if adding a reranker is worth it.  While it promised better results, 200ms latency and $0.01 per query.</p>
+<p>You need a way to systematically improve your system with data driven methods so that you are not wasting months on the wrong thing. </p>
+<p>Set up an automated pipeline to test different retrieval strategies:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Compare different retrieval approaches systematically</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="k">for</span> <span class="n">embedding_model</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;text-embedding-3-small&quot;</span><span class="p">,</span> <span class="s2">&quot;text-embedding-3-large&quot;</span><span class="p">]:</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="k">for</span> <span class="n">search_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span> <span class="s2">&quot;hybrid&quot;</span><span class="p">]:</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>        <span class="k">for</span> <span class="n">use_reranker</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>            <span class="n">results</span> <span class="o">=</span> <span class="n">evaluate_retrieval</span><span class="p">(</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>                <span class="n">questions</span><span class="p">,</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>                <span class="n">embedding_model</span><span class="o">=</span><span class="n">embedding_model</span><span class="p">,</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>                <span class="n">search_type</span><span class="o">=</span><span class="n">search_type</span><span class="p">,</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>                <span class="n">use_reranker</span><span class="o">=</span><span class="n">use_reranker</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>            <span class="p">)</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>            <span class="n">log_metrics</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Finding from the evaluation pipeline : </p>
+<ol>
+<li>Upgrading from text-embedding-3-small to text-embedding-3-large provided better performance than adding a re-ranker.</li>
+<li>The larger embedding model achieved near-perfect recall (0.98) at k=20 without a re-ranker.</li>
+<li>The re-ranker showed minimal statistical improvement, confirmed using bootstrapping and t-tests.We avoided an unnecessary cost while improving overall performance.&#x20;</li>
+</ol>
+<p>This allows for <strong>evidence-based decisions</strong> about retrieval architecture.</p>
+<h3 id="validating-your-improvements-with-statistical-rigor"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#validating-your-improvements-with-statistical-rigor">Validating Your Improvements with Statistical Rigor</a></h3>
+<p>Once you see performance improvements, validate them statistically:</p>
+<ul>
+<li><strong>Bootstrap sampling</strong>: Simulate multiple runs to estimate result stability.</li>
+<li><strong>Confidence intervals</strong>: Visualize performance ranges to identify overlapping results.</li>
+<li><strong>Statistical testing</strong>: Use t-tests to confirm if differences are significant.</li>
+</ul>
+<p>When comparing embedding models, <strong>t-statistics below -10 and p-values &lt; 0.001</strong> confirmed that the larger model's superior performance was statistically significant.</p>
+<h3 id="three-critical-mistakes-to-avoid"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#three-critical-mistakes-to-avoid">Three Critical Mistakes to Avoid</a></h3>
+<ol>
+<li><strong>Starting with generation evaluation</strong>: This is slow, expensive, and subjective. Start with retrieval metrics for faster iteration.</li>
+<li><strong>Using narrow test data</strong>: Generate diverse synthetic questions to uncover blind spots.</li>
+<li><strong>Making decisions without statistical validation</strong>: Ensure improvements are real, not just random variation.</li>
+</ol>
+<h3 id="start-measuring-what-matters"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#start-measuring-what-matters">Start Measuring What Matters</a></h3>
+<p>Retrieval isn’t just a nice-to-have—it’s the backbone of effective generation tasks. Whether you’re summarizing, reporting, or extracting insights, it’s the step that turns potential into performance</p>
+<p>The most profitable AI systems aren’t built on hype—they’re built on systematic measurement and optimization that drive real business impact. By prioritizing retrieval, you will create AI generation systems that are <strong>faster, more reliable, and cost-effective</strong>.</p>
+<p>Don't let poor retrieval undermine your AI projects. <strong>Start optimizing today.</strong></p>
+<hr />
     
   </div>
 </article> 
