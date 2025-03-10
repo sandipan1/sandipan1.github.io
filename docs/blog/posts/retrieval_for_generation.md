@@ -86,21 +86,24 @@ Example output:
 
 ```python
 from pydantic import BaseModel
-from instructor import OpenAI
+import instructor
 import random
 
 class SyntheticQuestion(BaseModel):
     question: str
     relevance: str
 
-client = OpenAI()
+client = instructor.from_openai(openai.OpenAI())
 questions = []
 
 for sql_example in challenging_examples:
     constraints = random.choice(["time", "amount", "limit", "comparison"])
-    question = client.structured_generate(
-        SyntheticQuestion,
-        prompt=f"Generate a question for this SQL: {sql_example}. Add {constraints} constraint."
+    question = client.chat.completions.create(
+        model="gpt-4o-mini",
+        response_model=SyntheticQuestion,
+        messages=[
+            {"role": "user", "content":f"Generate a question for this SQL: {sql_example}. Add {constraints} constraint."}
+            ]
     )
     questions.append(question)
 ```

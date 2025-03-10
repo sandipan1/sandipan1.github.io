@@ -16,7 +16,6 @@ nav:
       - index: blog/index.md
   - Work with me: work.md
   - Newsletter: newsletter.md
-  - Talks: talk.md
 
 plugins:
   - search
