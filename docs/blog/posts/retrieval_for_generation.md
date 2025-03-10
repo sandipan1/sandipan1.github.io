@@ -109,12 +109,12 @@ This ensures comprehensive test coverage without needing real user data.
 
 ### Step 2: Define Meaningful Retrieval Metrics
 
-- **Precision\@K**: How many retrieved items are relevant?
-  - *improving precision makes sure we are not wasting resources and increasing latency by processing information which are irrelevant*
-- **Recall\@K**: How many relevant items did we retrieve? 
-  - &#x20;*By optimizing for recall, we ensure that the language model has access to all necessary information, which can lead to more accurate and reliable generated responses.*
-- **MRR (Mean Reciprocal Rank)**: How highly ranked are the relevant items?
-  - *if we want to display retrieved results as citations to users, we only show the highly ranked retrieved results to the user.* 
+- **Precision@K**: How many retrieved items are relevant? 
+  *Improving precision makes sure we are not wasting resources and increasing latency by processing information which are irrelevant*
+- **Recall@K**: How many relevant items did we retrieve? 
+  *By optimizing for recall, we ensure that the language model has access to all necessary information, which can lead to more accurate and reliable generated responses.*
+- **MRR@K (Mean Reciprocal Rank)**: How highly ranked are the relevant items?
+  *If we want to display retrieved results as citations to users, we only show the highly ranked retrieved results to the user.* 
 
 For most generation tasks, **recall** is critical—your LLM needs all necessary information to generate accurate responses.
 
@@ -122,7 +122,7 @@ For most generation tasks, **recall** is critical—your LLM needs all necessary
 
 For example, you want to improve performance and accuracy of your text-to-SQL system for your analytics engine.
 
-You want to evaluate if adding a reranker is worth it.  While it promised better results, 200ms latency and \$0.01 per query.
+You want to evaluate if adding a reranker is worth it.  While it promised better results, it adds 200ms latency and \$0.01 per query.
 
 You need a way to systematically improve your system with data driven methods so that you are not wasting months on the wrong thing. 
 
