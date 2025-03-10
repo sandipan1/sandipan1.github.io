@@ -247,23 +247,6 @@
   
 
       
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../talk.html" class="md-tabs__link">
-        
-  
-    
-  
-  Talks
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -702,26 +685,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../talk.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Talks
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -859,23 +822,26 @@
 </span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>}]
 </span></code></pre></div>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="kn">from</span> <span class="nn">instructor</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="kn">import</span> <span class="nn">instructor</span>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="kn">import</span> <span class="nn">random</span>
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
 </span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="k">class</span> <span class="nc">SyntheticQuestion</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 </span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="n">question</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="n">relevance</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
-</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="n">client</span> <span class="o">=</span> <span class="n">instructor</span><span class="o">.</span><span class="n">from_openai</span><span class="p">(</span><span class="n">openai</span><span class="o">.</span><span class="n">OpenAI</span><span class="p">())</span>
 </span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="n">questions</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
 </span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="k">for</span> <span class="n">sql_example</span> <span class="ow">in</span> <span class="n">challenging_examples</span><span class="p">:</span>
 </span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    <span class="n">constraints</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">,</span> <span class="s2">&quot;comparison&quot;</span><span class="p">])</span>
-</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    <span class="n">question</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">structured_generate</span><span class="p">(</span>
-</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>        <span class="n">SyntheticQuestion</span><span class="p">,</span>
-</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>        <span class="n">prompt</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Generate a question for this SQL: </span><span class="si">{</span><span class="n">sql_example</span><span class="si">}</span><span class="s2">. Add </span><span class="si">{</span><span class="n">constraints</span><span class="si">}</span><span class="s2"> constraint.&quot;</span>
-</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>    <span class="p">)</span>
-</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>    <span class="n">questions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    <span class="n">question</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-mini&quot;</span><span class="p">,</span>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>        <span class="n">response_model</span><span class="o">=</span><span class="n">SyntheticQuestion</span><span class="p">,</span>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;Generate a question for this SQL: </span><span class="si">{</span><span class="n">sql_example</span><span class="si">}</span><span class="s2">. Add </span><span class="si">{</span><span class="n">constraints</span><span class="si">}</span><span class="s2"> constraint.&quot;</span><span class="p">}</span>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>            <span class="p">]</span>
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>    <span class="p">)</span>
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>    <span class="n">questions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
 </span></code></pre></div>
 <p>This ensures comprehensive test coverage without needing real user data.</p>
 <h4 id="step-2-define-meaningful-retrieval-metrics"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#step-2-define-meaningful-retrieval-metrics">Step 2: Define Meaningful Retrieval Metrics</a></h4>
