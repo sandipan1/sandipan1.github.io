@@ -880,17 +880,17 @@
 <p>This ensures comprehensive test coverage without needing real user data.</p>
 <h4 id="step-2-define-meaningful-retrieval-metrics"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#step-2-define-meaningful-retrieval-metrics">Step 2: Define Meaningful Retrieval Metrics</a></h4>
 <ul>
-<li><strong>Precision\@K</strong>: How many retrieved items are relevant?</li>
-<li><em>improving precision makes sure we are not wasting resources and increasing latency by processing information which are irrelevant</em></li>
-<li><strong>Recall\@K</strong>: How many relevant items did we retrieve? </li>
-<li>&#x20;<em>By optimizing for recall, we ensure that the language model has access to all necessary information, which can lead to more accurate and reliable generated responses.</em></li>
-<li><strong>MRR (Mean Reciprocal Rank)</strong>: How highly ranked are the relevant items?</li>
-<li><em>if we want to display retrieved results as citations to users, we only show the highly ranked retrieved results to the user.</em> </li>
+<li><strong>Precision@K</strong>: How many retrieved items are relevant? 
+  <em>Improving precision makes sure we are not wasting resources and increasing latency by processing information which are irrelevant</em></li>
+<li><strong>Recall@K</strong>: How many relevant items did we retrieve? 
+  <em>By optimizing for recall, we ensure that the language model has access to all necessary information, which can lead to more accurate and reliable generated responses.</em></li>
+<li><strong>MRR@K (Mean Reciprocal Rank)</strong>: How highly ranked are the relevant items?
+  <em>If we want to display retrieved results as citations to users, we only show the highly ranked retrieved results to the user.</em> </li>
 </ul>
 <p>For most generation tasks, <strong>recall</strong> is critical—your LLM needs all necessary information to generate accurate responses.</p>
 <h4 id="step-3-build-your-evaluation-pipeline"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#step-3-build-your-evaluation-pipeline">Step 3: Build Your Evaluation Pipeline</a></h4>
 <p>For example, you want to improve performance and accuracy of your text-to-SQL system for your analytics engine.</p>
-<p>You want to evaluate if adding a reranker is worth it.  While it promised better results, 200ms latency and $0.01 per query.</p>
+<p>You want to evaluate if adding a reranker is worth it.  While it promised better results, it adds 200ms latency and $0.01 per query.</p>
 <p>You need a way to systematically improve your system with data driven methods so that you are not wasting months on the wrong thing. </p>
 <p>Set up an automated pipeline to test different retrieval strategies:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Compare different retrieval approaches systematically</span>
