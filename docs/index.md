@@ -18,9 +18,7 @@ Let’s Talk AI Strategy
 
 I work with business leaders, product teams, and AI practitioners to deploy practical AI solutions that drive measurable impact. If you’re looking to integrate AI into your operations, optimize existing AI systems, or explore new AI-driven opportunities,let’s talk.
 
-
-[Contact Me](mailto:work@sandipanhaldar.com){ .md-button .md-button--primary }
-
-
-
-
+<div style="display: flex; gap: 20px;">
+  <a href="mailto:work@sandipanhaldar.com" style="background-color: #3949ab; color: white; padding: 16px 32px; text-decoration: none; border-radius: 4px; font-weight: 500;">Contact Me</a>
+  <a href="https://cal.com/sandipanhaldar/30min" style="background-color: #3949ab; color: white; padding: 16px 32px; text-decoration: none; border-radius: 4px; font-weight: 500;">Book a Call</a>
+</div>
