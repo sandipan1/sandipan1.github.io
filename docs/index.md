@@ -23,4 +23,4 @@ I work with business leaders, product teams, and AI practitioners to deploy prac
 
 
 
-<!-- <script async data-uid="b184c2f91e" src="https://ivan-leo.kit.com/b184c2f91e/index.js"></script> -->
+
