@@ -1,8 +1,10 @@
 # Newsletter
 
-Once a month, I send out a newsletter with some of the things I've been working on, thinking about and learning about.
+Once a week, I send out a newsletter with some of the things I've been working on, thinking about and learning about.
 
 If you'd like to recieve it, you can sign up below.
+
+<script async data-uid="bd1c0bcbea" src="https://improve-ai-systems.kit.com/bd1c0bcbea/index.js"></script>
 <!-- 
 <script async data-uid="b184c2f91e" src="https://ivan-leo.kit.com/b184c2f91e/index.js"></script>
 
