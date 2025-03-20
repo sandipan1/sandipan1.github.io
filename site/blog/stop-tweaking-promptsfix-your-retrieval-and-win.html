@@ -929,11 +929,11 @@
 
   <h1>Stop Tweaking Prompts—Fix Your Retrieval and Win</h1>
 
-<h2 id="the-hidden-business-metrics-driving-ai-success-or-costly-failure">The Hidden Business Metrics Driving AI Success (or Costly Failure)</h2>
+<h2 id="the-hidden-business-metrics-driving-ai-success-or-costly-failure">The Hidden Business Metrics Driving AI Success (or Costly Failure)<a class="headerlink" href="#the-hidden-business-metrics-driving-ai-success-or-costly-failure" title="Permanent link">&para;</a></h2>
 <p>Are your AI generation systems consistently underperforming despite endless prompt tweaking? You're likely optimizing the wrong part of your pipeline. After analyzing  generation systems across industries, I've discovered an uncomfortable truth: most teams waste resources fine-tuning models and prompts while ignoring the foundation everything depends on—<strong>retrieval quality</strong>.</p>
-<h2 id="the-costly-mistake-most-ai-teams-make">The Costly Mistake Most AI Teams Make</h2>
+<h2 id="the-costly-mistake-most-ai-teams-make">The Costly Mistake Most AI Teams Make<a class="headerlink" href="#the-costly-mistake-most-ai-teams-make" title="Permanent link">&para;</a></h2>
 <p>Your generation task is only as good as the information it works with. Yet most teams spend weeks optimizing LLM prompts while dedicating minimal effort to their retrieval systems. This fundamental mistake costs companies thousands in wasted compute and engineering hours.</p>
-<h3 id="common-tradeoffs-between-content-generation-retrieval">Common Tradeoffs Between Content Generation &amp; Retrieval</h3>
+<h3 id="common-tradeoffs-between-content-generation-retrieval">Common Tradeoffs Between Content Generation &amp; Retrieval<a class="headerlink" href="#common-tradeoffs-between-content-generation-retrieval" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Speed</strong>: Content generation takes 1-10 seconds per test, while retrieval takes only 10-800ms.</li>
 <li><strong>Cost</strong>: Content generation can cost hundreds per run, whereas retrieval is negligible.</li>
@@ -942,10 +942,10 @@
 <li><strong>Scalability</strong>: Content evaluation is limited, retrieval can be automated.</li>
 </ul>
 <p>By focusing on retrieval first, you build a solid foundation that enhances everything else. Here’s why it matters and how to implement it systematically.</p>
-<h2 id="framing-generation-as-a-retrieval-problem">Framing Generation as a Retrieval Problem</h2>
+<h2 id="framing-generation-as-a-retrieval-problem">Framing Generation as a Retrieval Problem<a class="headerlink" href="#framing-generation-as-a-retrieval-problem" title="Permanent link">&para;</a></h2>
 <p>Consider text-to-SQL generation. Before generating SQL, the system must first retrieve relevant context efficiently:</p>
 <p>The fundamental step is to create a dataset where each entry consists of an generated input (e.g., a prompt, a question) paired with its desired output (e.g., an answer, a summary, sql snippet). Now task of the retrieval system is to retrieve the SQL snippet from a query efficiently and accurately. By defining and tracking retrieval metrics like recall , MRR you can identify areas where the retrieval system is failing to find the correct SQL snippets for cetain type of queries which informs optimization effort like finetuning embedding model, experiment with different indexing</p>
-<h3 id="key-benefits-of-retrieval-first-approach">Key Benefits of Retrieval-First Approach</h3>
+<h3 id="key-benefits-of-retrieval-first-approach">Key Benefits of Retrieval-First Approach<a class="headerlink" href="#key-benefits-of-retrieval-first-approach" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Early edge case detection</strong>: Identify potential failure points by analyzing retrieval errors before they impact production performance.</li>
 <li><strong>Business logic integration</strong>: Ensure that company-specific calculations, such as custom pricing rules or compliance constraints, are accurately retrieved and incorporated into query generation. For example, when handling tax computations, retrieving company-specific tax codes before generating SQL ensures compliance and accuracy:</li>
@@ -962,8 +962,8 @@
 <li><strong>Metrics-driven optimization</strong>: Precision, recall, and MRR provide objective benchmarks and help ensure accurate and comprehensive infromation retrieval </li>
 <li><strong>Few-shot enhancement</strong>: A generation task can be greatly improved by including few-shot examples especially those of business specific edge cases or difficult to retrieve.</li>
 </ol>
-<h2 id="the-three-step-system-for-optimizing-retrieval">The Three-Step System for Optimizing Retrieval</h2>
-<h3 id="step-1-create-synthetic-test-data">Step 1: Create Synthetic Test Data</h3>
+<h2 id="the-three-step-system-for-optimizing-retrieval">The Three-Step System for Optimizing Retrieval<a class="headerlink" href="#the-three-step-system-for-optimizing-retrieval" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-create-synthetic-test-data">Step 1: Create Synthetic Test Data<a class="headerlink" href="#step-1-create-synthetic-test-data" title="Permanent link">&para;</a></h3>
 <p>Generate diverse test questions reflecting real user queries:</p>
 <p>Example input:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>challenging_examples = [&quot;SELECT * FROM sales WHERE amount &gt; 1000&quot;, &quot;SELECT COUNT(*) FROM users WHERE signup_date &gt; &#39;2024-01-01&#39;&quot;]
@@ -1000,7 +1000,7 @@
 </span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    <span class="n">questions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
 </span></code></pre></div>
 <p>This ensures comprehensive test coverage without needing real user data.</p>
-<h3 id="step-2-define-meaningful-retrieval-metrics">Step 2: Define Meaningful Retrieval Metrics</h3>
+<h3 id="step-2-define-meaningful-retrieval-metrics">Step 2: Define Meaningful Retrieval Metrics<a class="headerlink" href="#step-2-define-meaningful-retrieval-metrics" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Precision@K</strong>: How many retrieved items are relevant? 
   <em>Improving precision makes sure we are not wasting resources and increasing latency by processing information which are irrelevant</em></li>
@@ -1010,7 +1010,7 @@
   <em>If we want to display retrieved results as citations to users, we only show the highly ranked retrieved results to the user.</em> </li>
 </ul>
 <p>For most generation tasks, <strong>recall</strong> is critical—your LLM needs all necessary information to generate accurate responses.</p>
-<h3 id="step-3-build-your-evaluation-pipeline">Step 3: Build Your Evaluation Pipeline</h3>
+<h3 id="step-3-build-your-evaluation-pipeline">Step 3: Build Your Evaluation Pipeline<a class="headerlink" href="#step-3-build-your-evaluation-pipeline" title="Permanent link">&para;</a></h3>
 <p>For example, you want to improve performance and accuracy of your text-to-SQL system for your analytics engine.</p>
 <p>You want to evaluate if adding a reranker is worth it.  While it promised better results, it adds 200ms latency and $0.01 per query.</p>
 <p>You need a way to systematically improve your system with data driven methods so that you are not wasting months on the wrong thing. </p>
@@ -1034,7 +1034,7 @@
 <li>The re-ranker showed minimal statistical improvement, confirmed using bootstrapping and t-tests.We avoided an unnecessary cost while improving overall performance.&#x20;</li>
 </ol>
 <p>This allows for <strong>evidence-based decisions</strong> about retrieval architecture.</p>
-<h2 id="validating-your-improvements-with-statistical-rigor">Validating Your Improvements with Statistical Rigor</h2>
+<h2 id="validating-your-improvements-with-statistical-rigor">Validating Your Improvements with Statistical Rigor<a class="headerlink" href="#validating-your-improvements-with-statistical-rigor" title="Permanent link">&para;</a></h2>
 <p>Once you see performance improvements, validate them statistically:</p>
 <ul>
 <li><strong>Bootstrap sampling</strong>: Simulate multiple runs to estimate result stability.</li>
@@ -1042,13 +1042,13 @@
 <li><strong>Statistical testing</strong>: Use t-tests to confirm if differences are significant.</li>
 </ul>
 <p>When comparing embedding models, <strong>t-statistics below -10 and p-values &lt; 0.001</strong> confirmed that the larger model's superior performance was statistically significant.</p>
-<h2 id="three-critical-mistakes-to-avoid">Three Critical Mistakes to Avoid</h2>
+<h2 id="three-critical-mistakes-to-avoid">Three Critical Mistakes to Avoid<a class="headerlink" href="#three-critical-mistakes-to-avoid" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Starting with generation evaluation</strong>: This is slow, expensive, and subjective. Start with retrieval metrics for faster iteration.</li>
 <li><strong>Using narrow test data</strong>: Generate diverse synthetic questions to uncover blind spots.</li>
 <li><strong>Making decisions without statistical validation</strong>: Ensure improvements are real, not just random variation.</li>
 </ol>
-<h2 id="start-measuring-what-matters">Start Measuring What Matters</h2>
+<h2 id="start-measuring-what-matters">Start Measuring What Matters<a class="headerlink" href="#start-measuring-what-matters" title="Permanent link">&para;</a></h2>
 <p>Retrieval isn’t just a nice-to-have—it’s the backbone of effective generation tasks. Whether you’re summarizing, reporting, or extracting insights, it’s the step that turns potential into performance</p>
 <p>The most profitable AI systems aren’t built on hype—they’re built on systematic measurement and optimization that drive real business impact. By prioritizing retrieval, you will create AI generation systems that are <strong>faster, more reliable, and cost-effective</strong>.</p>
 <p>Don't let poor retrieval undermine your AI projects. <strong>Start optimizing today.</strong></p>

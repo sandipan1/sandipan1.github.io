@@ -1,11 +1,41 @@
 # Work With Me
 
+I help in the following areas : 
+## Data Strategy 
+- Analyse your existing data landscape and your user's information needs
+- Audit existing pipelines for hidden security risks
+- Architect and implement granular indexing strategies for your specific usecases
+- Design and deploy robust query routing strategies
+- End-to-end fine-tuning pipelines for embedding models for highly personalized retrieval
+- Identify bottlenecks and performance optimization for future proof systems
 
-I'd love to have a chat if you're
+## Team building 
+- Stand-ups become focused on concrete experiments and metrics that is aligned with your business goals
+- Hand-on training on AI Expertise for your engineering team
+- Roadmap design and alignment
+- Communication strategies for probabilistic systems unlike traditional software systems
 
-- A startup struggling to figure out how to build more reliable evaluations for your LLM application
-- working in the LLM space and would like to bounce some ideas about UX, Evals, Synthetic data or anything that's interesting to you
-- Someone new to the LLM space and looking for some general advice
+## Reliable Evaluation system 
+ - Implement the right evaluation metrics that aligns with your business needs 
+ - Accelerate your testing from weeks to days 
+ - Align LLM judges with human feedback
+ - Implement statistical validation to distinguish meaningful improvements from random noise
+ - Benchmark architectures to quantify tradeoffs between cost, latency, and accuracy
+ - Synthetic test data to systematically target edge cases and failure modes without exposing sensitive user data
+ - Optimize experiment costs – Cache API results, test on subsets first, and prune dead-end experiments early
+
+## Improve RAG systems
+ - Pinpoint retrieval weaknesses by segmenting user queries by topic, intent to diagonise system failure
+ - Structure data – Extract metadata, tables, and visual context to enable precise filtering.
+- Automatically direct requests to specialized tools (SQL engines, image indexes, codebases)
+- Fine-tune embeddings and re-rankers using real user feedback to align outputs with domain-specific needs.
+- Build user-driven validation (thumbs-up/down, error highlighting) and guardrails for systematic upgrades.
+
+## Who This Is For:
+
+- Startups losing customers to unreliable AI
+- Teams struggling with slow, untrustworthy apps
+- Engineering leaders tired of “Why are we still debating this?” meetings
 
 Here's a [cal.com link](https://cal.com/sandipanhaldar/30min) to book some time if this sounds like something you're interested with.
 

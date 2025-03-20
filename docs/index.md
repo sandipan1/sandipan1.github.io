@@ -1,24 +1,38 @@
 # Who am I
 
-Hi, I’m Sandipan Haldar.
 
-I help businesses build and deploy AI systems that drive efficiency, automation, and smarter decision-making. By specializing in Retrieval-Augmented Generation (RAG), AI evaluation systems, and fine-tuning models, I help organizations improve information retrieval, optimize decision-making, and reduce operational costs.
+You’re not just looking for another consultant. You need someone who’s been in the trenches.
 
-## How I do Help
-- **Smarter AI Systems**: I design and optimize AI-driven retrieval systems that deliver accurate, relevant, and fast responses—whether for customer support, internal knowledge bases, or personalized recommendations.
-- **Cost & Efficiency Gains**: By fine-tuning AI models and optimizing retrieval strategies, businesses can achieve higher accuracy with fewer resources, reducing cloud costs and manual effort.
-- **Systematic AI Evaluation**: I build evaluation frameworks that ensure AI systems perform reliably in real-world conditions, preventing costly deployment failures.
-- **Structured Data Integration**: I help companies leverage metadata, SQL-based queries, and multi-modal AI to handle complex queries, particularly in e-commerce, finance, and enterprise applications.
+I’m **Sandipan Haldar**, an Applied AI Consultant who’s spent 4+ years designing data pipelines and deploying models for companies like [HRS](https://www.hrs.com/) and fast-growing startups.
+While leading AI projects, I noticed a pattern: businesses either treat AI like a software sprint or chase technical metrics that don’t move the needle. Teams burn cycles on:
 
-My Background
+- Debating solutions instead of testing them, while customers churn over slow, hallucination-prone AI
 
-I worked at [HRS](https://www.hrs.com/) for three years, leading AI workflows, data infrastructure, and pipeline automation to optimize business operations. Before that, I worked as a Data Scientist at various startups, helping organizations use AI to improve decision-making and operational efficiency.
+- Building "impressive" features users don’t need (like training models to “talk like pirates”) while latency drives users away
 
-Let’s Talk AI Strategy
+- Organizing data in ways that sabotage security and recall (like the "big pile of records" that leaks user data)
 
-I work with business leaders, product teams, and AI practitioners to deploy practical AI solutions that drive measurable impact. If you’re looking to integrate AI into your operations, optimize existing AI systems, or explore new AI-driven opportunities,let’s talk.
+- Optimizing RAG systems backwards - using bigger embedding models/rerankers without first asking “What are users actually asking? 
+
+- Rotating around different tools and not make any real progress
+
+That’s why I shifted to consulting—to help companies like yours:
+
+- Stop losing customers with RAG systems that balance accuracy, speed, and compliance
+
+- Cut decision paralysis by replacing endless debates with clear evaluation frameworks
+
+- Turn engineers into AI leaders in weeks, not years, using hand-on experience
+
+- Fix hidden bottlenecks causing latency and hallucinations, from broken data pipelines to untracked model drift
+
+- Turn technical wins into business outcomes: Like the client who used AI to prevent $50k/month in communication delays (not just “improved recall”)
+
+I don't just give advice — I do the work too 
+[See How It Works](work.md) → 
+
 
 <div style="display: flex; gap: 20px;">
   <a href="mailto:work@sandipanhaldar.com" style="background-color: #3949ab; color: white; padding: 16px 32px; text-decoration: none; border-radius: 4px; font-weight: 500;">Contact Me</a>
-  <a href="https://cal.com/sandipanhaldar/30min" style="background-color: #3949ab; color: white; padding: 16px 32px; text-decoration: none; border-radius: 4px; font-weight: 500;">Book a Call</a>
+  <a href="https://cal.com/sandipanhaldar/30min" style="background-color: #3949ab; color: white; padding: 16px 32px; text-decoration: none; border-radius: 4px; font-weight: 500;">Book a free call</a>
 </div>
