@@ -1,3 +1,25 @@
+<!--
+  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -6,15 +28,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="this blog is a part 1 of the MCP Series">
       
       
-        <link rel="canonical" href="https://sandipanhaldar.com/blog/index.html">
+      
+        <link rel="canonical" href="https://sandipanhaldar.com/blog/part-1-how-to-connect-your-llm-agent-to-mcp-server.html">
       
       
-        <link rel="prev" href="../index.html">
+        <link rel="prev" href="stop-tweaking-promptsfix-your-retrieval-and-win.html">
       
-      
-        <link rel="next" href="category/ai.html">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +44,7 @@
     
     
       
-        <title>Index - Sandipan Haldar</title>
+        <title>(Part 1) How to connect your LLM Agent to MCP server - Sandipan Haldar</title>
       
     
     
@@ -65,6 +87,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#model-context-protocol-mcp" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -95,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              (Part 1) How to connect your LLM Agent to MCP server
             
           </span>
         </div>
@@ -253,7 +280,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -358,17 +387,10 @@
   
   
     
-      
-    
   
   
     <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+      <a href="index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -377,7 +399,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -737,6 +758,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -747,6 +770,119 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#model-context-protocol-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Context Protocol (MCP)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-should-you-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why should you care?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#easy-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Easy implementation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Breakdown
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Breakdown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-tools-through-mcp-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access tools through MCP Client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-selects-the-right-tools-from-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM selects the right tools from MCP server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invoke-tool-calls-using-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Invoke tool calls using LLM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-response-to-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Response to User
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dag-based-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAG-based Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -754,61 +890,130 @@
             
           
           
-<div class="md-content" data-md-component="content">
-  <div class="md-content__inner">
-    <!-- Header -->
-    <header class="md-typeset"></header>
+<div class="md-content md-content--post" data-md-component="content">
+  <!-- Sidebar -->
+  <div
+    class="md-sidebar md-sidebar--post"
+    data-md-component="sidebar"
+    data-md-type="navigation"
+  >
+    <div class="md-sidebar__scrollwrap">
+      <div class="md-sidebar__inner md-post">
+        <nav class="md-nav md-nav--primary">
+          <!-- Back to overview link -->
+          <div class="md-post__back">
+            <div class="md-nav__title md-nav__container">
+              <a href="index.html" class="md-nav__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                <span class="md-ellipsis"> Back to index </span>
+              </a>
+            </div>
+          </div>
 
-    <!-- Posts -->
-     <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="avatar.jpeg" alt="Sandipan Haldar">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-05-12 00:00:00">May 12, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mcp.html" class="md-meta__link">MCP</a>, 
-              <a href="category/ai-engineering.html" class="md-meta__link">AI Engineering</a>, 
-              <a href="category/llm.html" class="md-meta__link">LLM</a>, 
-              <a href="category/ai.html" class="md-meta__link">AI</a>, 
-              <a href="category/llm-agent.html" class="md-meta__link">LLM Agent</a></li>
-        
-        
           
-          <li class="md-meta__item">
+          <div class="md-post__authors md-typeset">
             
-              6 min read
+            <div class="md-profile md-post__profile">
+              <span class="md-author md-author--long">
+                <img src="avatar.jpeg" alt="Sandipan Haldar" />
+              </span>
+              <span class="md-profile__description">
+                <strong>
+                  
+                  <a href="https://twitter.com/intent/follow?screen_name=HaldarHq">Sandipan Haldar</a>
+                  
+                </strong>
+                <br />
+                Applied AI Consultant
+              </span>
+            </div>
             
-          </li>
+          </div>
+          
+
+          <!-- Post metadata -->
+          <ul class="md-post__meta md-nav__list">
+            <li class="md-nav__item md-nav__item--section">
+              <div class="md-post__title">
+                <span class="md-ellipsis"> Metadata </span>
+              </div>
+              <nav class="md-nav">
+                <ul class="md-nav__list">
+                  <!-- Post date -->
+                  <li class="md-nav__item">
+                    <div class="md-nav__link">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                      <time
+                        datetime="2025-05-12 00:00:00"
+                        class="md-ellipsis"
+                      >May 12, 2025</time>
+                    </div>
+                  </li>
+
+                  <!-- Post date updated -->
+                  
+
+                  <!-- Post categories -->
+                  
+                  <li class="md-nav__item">
+                    <div class="md-nav__link">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                      <span class="md-ellipsis">
+                        in 
+                        <a href="category/mcp.html">MCP</a>, 
+                        <a href="category/ai-engineering.html">AI Engineering</a>, 
+                        <a href="category/llm.html">LLM</a>, 
+                        <a href="category/ai.html">AI</a>, 
+                        <a href="category/llm-agent.html">LLM Agent</a>, 
+                        <a href="category/ai-agent.html">Ai Agent</a></span>
+                    </div>
+                  </li>
+                  
+
+                  <!-- Post readtime -->
+                   
+                  <li class="md-nav__item">
+                    <div class="md-nav__link">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                      <span class="md-ellipsis">
+                         6 min read
+                        
+                      </span>
+                    </div>
+                  </li>
+                  
+                </ul>
+              </nav>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Table of contents, if integrated -->
         
-      </ul>
-      
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="part-1-how-to-connect-your-llm-agent-to-mcp-server"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html">(Part 1) How to connect your LLM Agent to MCP server</a></h2>
+  </div>
+
+  <!-- Page content -->
+  <article class="md-content__inner md-typeset">
+     
+
+  
+  
+
+
+  <h1>(Part 1) How to connect your LLM Agent to MCP server</h1>
+
 <p>The Model Context Protocol (MCP) is quickly emerging as a foundational layer in the AI engineering stack — yet most conversations around it remain either too shallow or overly speculative. This blog series aims to cut through the noise.</p>
 <p>I’ll dive into what makes MCP unique, where it fits in the AI stack, and why some teams are quietly treating it as infrastructure. Along the way, we’ll explore topics like connecting LLMs to MCP servers, benchmarking tool retrieval, enabling human-in-the-loop workflows, multi-tenancy ,addressing security vulnerabilities and more.</p>
 <p>If you’re building serious AI systems or just curious about where things are headed, stay tuned. For the <u>Part 1 of the MCP series</u> , we will talk about to connect your LLM to a MCP server.</p>
-<h3 id="model-context-protocol-mcp"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#model-context-protocol-mcp">Model Context Protocol (MCP)</a></h3>
+<h2 id="model-context-protocol-mcp">Model Context Protocol (MCP)<a class="headerlink" href="#model-context-protocol-mcp" title="Permanent link">&para;</a></h2>
 <p>Model Context Protocol (MCP) is an open protocol introduced by Anthropic in late 2024 to standardize how <strong>AI models connect to external data sources and tools</strong>. At it's core, it defines a common format 
 for a Client to invoke operations on a external tool or service in a predictable way. Thus, by providing a uniform interface, MCP
 is intended to do for AI-agent integrations what traditional APIs did for web services –
 enable any AI application to talk to any service using a predictable, well-defined contract</p>
 <p><img alt="MCP Workflow" src="assets/mcp_workflow.png" /></p>
-<h3 id="why-should-you-care"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#why-should-you-care">Why should you care?</a></h3>
+<h2 id="why-should-you-care">Why should you care?<a class="headerlink" href="#why-should-you-care" title="Permanent link">&para;</a></h2>
 <p>Model Context Protocol brings in a few properties in Agentic workflows which was previously missing in the AI stack <br></p>
 <ul>
 <li>
@@ -820,7 +1025,7 @@ enable any AI application to talk to any service using a predictable, well-defin
 <li><strong>Consistent Agent Interface</strong> - MCP is the action taking interface. It removes the need for custom logic for implementations. For a developer the steps are straightforward -- Implement a MCP server, Register it with Agent PLatform </li>
 <li><strong>Flexible Integration</strong> - Clients and servers can dynamically discover each other's capabilities during initialization, allowing for flexible and extensible integrations that can evolve over time.</li>
 </ul>
-<h3 id="easy-implementation"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#easy-implementation">Easy implementation</a></h3>
+<h2 id="easy-implementation">Easy implementation<a class="headerlink" href="#easy-implementation" title="Permanent link">&para;</a></h2>
 <p>Let's look at a example on how to connect your LLM to a MCP server using Agentic library like Pydantic AI. You can create your own MCP server like <a href="https://github.com/jlowin/fastmcp/blob/main/examples/desktop.py">this</a>.
 But right now we will use <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite">SQLite MCP server</a> for this example. 
 This MCP server has tools like 'read_query', 'write_query', 'create_table', 'list_tables', 'describe_table', 'append_insight' to perform different function on the sqlite database.</p>
@@ -850,9 +1055,9 @@ This MCP server has tools like 'read_query', 'write_query', 'create_table', 'lis
 </span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="c1"># - `type` (TEXT): The type or species of the animal.</span>
 </span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="c1"># - `age` (INTEGER): The age of the animal.</span>
 </span></code></pre></div>
-<h3 id="detailed-breakdown"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#detailed-breakdown">Detailed Breakdown</a></h3>
+<h2 id="detailed-breakdown">Detailed Breakdown<a class="headerlink" href="#detailed-breakdown" title="Permanent link">&para;</a></h2>
 <p>Pydantic AI hides away a lot of complexity of the LLM workflow with MCP tools that is happening under the hood. We'll unravel some of the important steps.</p>
-<h4 id="access-tools-through-mcp-client"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#access-tools-through-mcp-client">Access tools through MCP Client</a></h4>
+<h3 id="access-tools-through-mcp-client">Access tools through MCP Client<a class="headerlink" href="#access-tools-through-mcp-client" title="Permanent link">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">fastmcp</span> <span class="kn">import</span> <span class="n">Client</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="s2">&quot;mcpServers&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -875,7 +1080,7 @@ This MCP server has tools like 'read_query', 'write_query', 'create_table', 'lis
 <blockquote>
 <p>Here the client when connected to the SQLite MCP server can fetch all the tools in the server with their input schema.</p>
 </blockquote>
-<h4 id="llm-selects-the-right-tools-from-mcp-server"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#llm-selects-the-right-tools-from-mcp-server">LLM selects the right tools from MCP server</a></h4>
+<h3 id="llm-selects-the-right-tools-from-mcp-server">LLM selects the right tools from MCP server<a class="headerlink" href="#llm-selects-the-right-tools-from-mcp-server" title="Permanent link">&para;</a></h3>
 <p>Based on the user query , LLM decides which tools to calls for execution.
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">instructor</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">async_client</span> <span class="o">=</span> <span class="n">instructor</span><span class="o">.</span><span class="n">from_openai</span><span class="p">(</span><span class="n">AsyncOpenAI</span><span class="p">())</span>
@@ -917,7 +1122,7 @@ This MCP server has tools like 'read_query', 'write_query', 'create_table', 'lis
 </span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error in API call: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>            <span class="k">return</span> <span class="kc">None</span>
 </span></code></pre></div></p>
-<h4 id="tool-definition"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#tool-definition">Tool definition</a></h4>
+<h3 id="tool-definition">Tool definition<a class="headerlink" href="#tool-definition" title="Permanent link">&para;</a></h3>
 <p>For the selected tools, create ToolDefinition for each tool which will be used to create Pydantic model for LLM response format</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">tool_definitions</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">for</span> <span class="n">func_name</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">func_names</span><span class="p">:</span>
@@ -934,7 +1139,7 @@ This MCP server has tools like 'read_query', 'write_query', 'create_table', 'lis
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="k">else</span><span class="p">:</span>
 </span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tool </span><span class="si">{</span><span class="n">func_name</span><span class="si">}</span><span class="s2"> not found in tools list.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<h4 id="invoke-tool-calls-using-llm"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#invoke-tool-calls-using-llm">Invoke tool calls using LLM</a></h4>
+<h3 id="invoke-tool-calls-using-llm">Invoke tool calls using LLM<a class="headerlink" href="#invoke-tool-calls-using-llm" title="Permanent link">&para;</a></h3>
 <p>For each tool, the LLM iteratively decides if the a tool needs to be called based on the user query and outputs the parameters for the tool call.
 <img alt="Agentic Flow of Tool Calls" src="assets/LLM_flow.png" />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">gpt_response</span> <span class="o">=</span> <span class="p">[]</span>
@@ -960,7 +1165,7 @@ This MCP server has tools like 'read_query', 'write_query', 'create_table', 'lis
 </span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="p">)</span>
 </span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="n">gpt_response</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 </span></code></pre></div></p>
-<h4 id="final-response-to-user"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#final-response-to-user">Final Response to User</a></h4>
+<h3 id="final-response-to-user">Final Response to User<a class="headerlink" href="#final-response-to-user" title="Permanent link">&para;</a></h3>
 <p>And finally consolidating 
 Consolidate all the tools call reponse and give it to LLM to generate a final response for the user query </p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">final_llm_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -993,7 +1198,7 @@ Consolidate all the tools call reponse and give it to LLM to generate a final re
             3. <strong>age</strong>: Type - INTEGER, Nullable - Yes <br>
             This table does not have any primary key defined</p>
 </blockquote>
-<h4 id="dag-based-solution"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#dag-based-solution">DAG-based Solution</a></h4>
+<h3 id="dag-based-solution">DAG-based Solution<a class="headerlink" href="#dag-based-solution" title="Permanent link">&para;</a></h3>
 <p>A DAG-based workflow would help in orchestrating complex, multi-step, and data-dependent tool interactions between your LLM agent and an MCP server.</p>
 <blockquote>
 <p>Suppose your LLM agent receives a user query:
@@ -1006,186 +1211,86 @@ Consolidate all the tools call reponse and give it to LLM to generate a final re
 <li>The results are gathered and passed to the LLM for summarization or further reasoning.
 This pattern generalizes to any scenario where tool outputs are variable in number or structure, and where subsequent tool calls depend on those outputs.</li>
 </ul>
-<h3 id="conclusion"><a class="toclink" href="part-1-how-to-connect-your-llm-agent-to-mcp-server.html#conclusion">Conclusion</a></h3>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <p>MCP makes tool execution deterministic but a Agent's decision to invoke the right tool with right parameters is driven by LLM which is non-deterministic.
 In the next part of the series, we'll see how evaluation of tool retrieval is important to making your agent work and improve them consistently </p>
-    
-  </div>
-</article>  <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="avatar.jpeg" alt="Sandipan Haldar">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-03-06 00:00:00">March 6, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/machine-learning.html" class="md-meta__link">Machine Learning</a>, 
-              <a href="category/ai-engineering.html" class="md-meta__link">AI Engineering</a>, 
-              <a href="category/llm.html" class="md-meta__link">LLM</a>, 
-              <a href="category/rag.html" class="md-meta__link">RAG</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              5 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="stop-tweaking-promptsfix-your-retrieval-and-win"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html">Stop Tweaking Prompts—Fix Your Retrieval and Win</a></h2>
-<h3 id="the-hidden-business-metrics-driving-ai-success-or-costly-failure"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#the-hidden-business-metrics-driving-ai-success-or-costly-failure">The Hidden Business Metrics Driving AI Success (or Costly Failure)</a></h3>
-<p>Are your AI generation systems consistently underperforming despite endless prompt tweaking? You're likely optimizing the wrong part of your pipeline. After analyzing  generation systems across industries, I've discovered an uncomfortable truth: most teams waste resources fine-tuning models and prompts while ignoring the foundation everything depends on—<strong>retrieval quality</strong>.</p>
-<h3 id="the-costly-mistake-most-ai-teams-make"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#the-costly-mistake-most-ai-teams-make">The Costly Mistake Most AI Teams Make</a></h3>
-<p>Your generation task is only as good as the information it works with. Yet most teams spend weeks optimizing LLM prompts while dedicating minimal effort to their retrieval systems. This fundamental mistake costs companies thousands in wasted compute and engineering hours.</p>
-<h4 id="common-tradeoffs-between-content-generation-retrieval"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#common-tradeoffs-between-content-generation-retrieval">Common Tradeoffs Between Content Generation &amp; Retrieval</a></h4>
-<ul>
-<li><strong>Speed</strong>: Content generation takes 1-10 seconds per test, while retrieval takes only 10-800ms.</li>
-<li><strong>Cost</strong>: Content generation can cost hundreds per run, whereas retrieval is negligible.</li>
-<li><strong>Objectivity</strong>: Content evaluation is subjective, while retrieval metrics are quantitative.</li>
-<li><strong>Iteration Speed</strong>: Content tuning takes hours, retrieval tuning takes minutes.</li>
-<li><strong>Scalability</strong>: Content evaluation is limited, retrieval can be automated.</li>
-</ul>
-<p>By focusing on retrieval first, you build a solid foundation that enhances everything else. Here’s why it matters and how to implement it systematically.</p>
-<h3 id="framing-generation-as-a-retrieval-problem"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#framing-generation-as-a-retrieval-problem">Framing Generation as a Retrieval Problem</a></h3>
-<p>Consider text-to-SQL generation. Before generating SQL, the system must first retrieve relevant context efficiently:</p>
-<p>The fundamental step is to create a dataset where each entry consists of an generated input (e.g., a prompt, a question) paired with its desired output (e.g., an answer, a summary, sql snippet). Now task of the retrieval system is to retrieve the SQL snippet from a query efficiently and accurately. By defining and tracking retrieval metrics like recall , MRR you can identify areas where the retrieval system is failing to find the correct SQL snippets for cetain type of queries which informs optimization effort like finetuning embedding model, experiment with different indexing</p>
-<h4 id="key-benefits-of-retrieval-first-approach"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#key-benefits-of-retrieval-first-approach">Key Benefits of Retrieval-First Approach</a></h4>
-<ol>
-<li><strong>Early edge case detection</strong>: Identify potential failure points by analyzing retrieval errors before they impact production performance.</li>
-<li><strong>Business logic integration</strong>: Ensure that company-specific calculations, such as custom pricing rules or compliance constraints, are accurately retrieved and incorporated into query generation. For example, when handling tax computations, retrieving company-specific tax codes before generating SQL ensures compliance and accuracy:</li>
-</ol>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Example tax code for a specific company</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">def</span> <span class="nf">calculate_tax</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">tax_code</span><span class="p">):</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">tax_rates</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">}</span>  <span class="c1"># Different tax rules per company</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">tax_rates</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tax_code</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>  <span class="c1"># Default tax rate if code is unknown</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Applying tax calculation in query generation</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">final_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SELECT total_price, total_price + </span><span class="si">{</span><span class="n">calculate_tax</span><span class="p">(</span><span class="s1">&#39;total_price&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">tax_code</span><span class="p">)</span><span class="si">}</span><span class="s2"> AS total_with_tax FROM orders&quot;</span>
-</span></code></pre></div>
-<ol>
-<li><strong>Metrics-driven optimization</strong>: Precision, recall, and MRR provide objective benchmarks and help ensure accurate and comprehensive infromation retrieval </li>
-<li><strong>Few-shot enhancement</strong>: A generation task can be greatly improved by including few-shot examples especially those of business specific edge cases or difficult to retrieve.</li>
-</ol>
-<h3 id="the-three-step-system-for-optimizing-retrieval"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#the-three-step-system-for-optimizing-retrieval">The Three-Step System for Optimizing Retrieval</a></h3>
-<h4 id="step-1-create-synthetic-test-data"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#step-1-create-synthetic-test-data">Step 1: Create Synthetic Test Data</a></h4>
-<p>Generate diverse test questions reflecting real user queries:</p>
-<p>Example input:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>challenging_examples = [&quot;SELECT * FROM sales WHERE amount &gt; 1000&quot;, &quot;SELECT COUNT(*) FROM users WHERE signup_date &gt; &#39;2024-01-01&#39;&quot;]
-</span></code></pre></div>
-<p>Example output:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>[{
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    &quot;question&quot;: &quot;How many users signed up after January 1, 2024?&quot;,
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    &quot;relevance&quot;: &quot;high&quot;
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>}, {
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    &quot;question&quot;: &quot;Show all sales transactions where the amount exceeds 1000.&quot;,
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    &quot;relevance&quot;: &quot;high&quot;
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>}]
-</span></code></pre></div>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span> <span class="nn">instructor</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span> <span class="nn">random</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">class</span> <span class="nc">SyntheticQuestion</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">question</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">relevance</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">client</span> <span class="o">=</span> <span class="n">instructor</span><span class="o">.</span><span class="n">from_openai</span><span class="p">(</span><span class="n">openai</span><span class="o">.</span><span class="n">OpenAI</span><span class="p">())</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">questions</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">for</span> <span class="n">sql_example</span> <span class="ow">in</span> <span class="n">challenging_examples</span><span class="p">:</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">constraints</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">,</span> <span class="s2">&quot;comparison&quot;</span><span class="p">])</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">question</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-mini&quot;</span><span class="p">,</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="n">response_model</span><span class="o">=</span><span class="n">SyntheticQuestion</span><span class="p">,</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;Generate a question for this SQL: </span><span class="si">{</span><span class="n">sql_example</span><span class="si">}</span><span class="s2">. Add </span><span class="si">{</span><span class="n">constraints</span><span class="si">}</span><span class="s2"> constraint.&quot;</span><span class="p">}</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>            <span class="p">]</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    <span class="p">)</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    <span class="n">questions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
-</span></code></pre></div>
-<p>This ensures comprehensive test coverage without needing real user data.</p>
-<h4 id="step-2-define-meaningful-retrieval-metrics"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#step-2-define-meaningful-retrieval-metrics">Step 2: Define Meaningful Retrieval Metrics</a></h4>
-<ul>
-<li><strong>Precision@K</strong>: How many retrieved items are relevant? 
-  <em>Improving precision makes sure we are not wasting resources and increasing latency by processing information which are irrelevant</em></li>
-<li><strong>Recall@K</strong>: How many relevant items did we retrieve? 
-  <em>By optimizing for recall, we ensure that the language model has access to all necessary information, which can lead to more accurate and reliable generated responses.</em></li>
-<li><strong>MRR@K (Mean Reciprocal Rank)</strong>: How highly ranked are the relevant items?
-  <em>If we want to display retrieved results as citations to users, we only show the highly ranked retrieved results to the user.</em> </li>
-</ul>
-<p>For most generation tasks, <strong>recall</strong> is critical—your LLM needs all necessary information to generate accurate responses.</p>
-<h4 id="step-3-build-your-evaluation-pipeline"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#step-3-build-your-evaluation-pipeline">Step 3: Build Your Evaluation Pipeline</a></h4>
-<p>For example, you want to improve performance and accuracy of your text-to-SQL system for your analytics engine.</p>
-<p>You want to evaluate if adding a reranker is worth it.  While it promised better results, it adds 200ms latency and $0.01 per query.</p>
-<p>You need a way to systematically improve your system with data driven methods so that you are not wasting months on the wrong thing. </p>
-<p>Set up an automated pipeline to test different retrieval strategies:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Compare different retrieval approaches systematically</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">for</span> <span class="n">embedding_model</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;text-embedding-3-small&quot;</span><span class="p">,</span> <span class="s2">&quot;text-embedding-3-large&quot;</span><span class="p">]:</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="k">for</span> <span class="n">search_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span> <span class="s2">&quot;hybrid&quot;</span><span class="p">]:</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        <span class="k">for</span> <span class="n">use_reranker</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>            <span class="n">results</span> <span class="o">=</span> <span class="n">evaluate_retrieval</span><span class="p">(</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>                <span class="n">questions</span><span class="p">,</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>                <span class="n">embedding_model</span><span class="o">=</span><span class="n">embedding_model</span><span class="p">,</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>                <span class="n">search_type</span><span class="o">=</span><span class="n">search_type</span><span class="p">,</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>                <span class="n">use_reranker</span><span class="o">=</span><span class="n">use_reranker</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>            <span class="p">)</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>            <span class="n">log_metrics</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-</span></code></pre></div>
-<p>Finding from the evaluation pipeline : </p>
-<ol>
-<li>Upgrading from text-embedding-3-small to text-embedding-3-large provided better performance than adding a re-ranker.</li>
-<li>The larger embedding model achieved near-perfect recall (0.98) at k=20 without a re-ranker.</li>
-<li>The re-ranker showed minimal statistical improvement, confirmed using bootstrapping and t-tests.We avoided an unnecessary cost while improving overall performance.&#x20;</li>
-</ol>
-<p>This allows for <strong>evidence-based decisions</strong> about retrieval architecture.</p>
-<h3 id="validating-your-improvements-with-statistical-rigor"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#validating-your-improvements-with-statistical-rigor">Validating Your Improvements with Statistical Rigor</a></h3>
-<p>Once you see performance improvements, validate them statistically:</p>
-<ul>
-<li><strong>Bootstrap sampling</strong>: Simulate multiple runs to estimate result stability.</li>
-<li><strong>Confidence intervals</strong>: Visualize performance ranges to identify overlapping results.</li>
-<li><strong>Statistical testing</strong>: Use t-tests to confirm if differences are significant.</li>
-</ul>
-<p>When comparing embedding models, <strong>t-statistics below -10 and p-values &lt; 0.001</strong> confirmed that the larger model's superior performance was statistically significant.</p>
-<h3 id="three-critical-mistakes-to-avoid"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#three-critical-mistakes-to-avoid">Three Critical Mistakes to Avoid</a></h3>
-<ol>
-<li><strong>Starting with generation evaluation</strong>: This is slow, expensive, and subjective. Start with retrieval metrics for faster iteration.</li>
-<li><strong>Using narrow test data</strong>: Generate diverse synthetic questions to uncover blind spots.</li>
-<li><strong>Making decisions without statistical validation</strong>: Ensure improvements are real, not just random variation.</li>
-</ol>
-<h3 id="start-measuring-what-matters"><a class="toclink" href="stop-tweaking-promptsfix-your-retrieval-and-win.html#start-measuring-what-matters">Start Measuring What Matters</a></h3>
-<p>Retrieval isn’t just a nice-to-have—it’s the backbone of effective generation tasks. Whether you’re summarizing, reporting, or extracting insights, it’s the step that turns potential into performance</p>
-<p>The most profitable AI systems aren’t built on hype—they’re built on systematic measurement and optimization that drive real business impact. By prioritizing retrieval, you will create AI generation systems that are <strong>faster, more reliable, and cost-effective</strong>.</p>
-<p>Don't let poor retrieval undermine your AI projects. <strong>Start optimizing today.</strong></p>
-<hr />
-    
-  </div>
-</article> 
-
-    <!-- Pagination -->
-      
 
 
 
-<nav class="md-pagination">
+
+
+
+
   
-</nav>  
-  </div>
+  
+
+
+
+
+  
+
+
+
+    <!-- Add social sharing buttons -->
+    <div class="md-social-share" style="margin: 2rem 0; text-align: center">
+      <span
+        class="md-social-share__label"
+        style="display: block; margin-bottom: 1rem; font-weight: 500"
+        >Share this post:</span
+      >
+      <div
+        class="md-social-share__buttons"
+        style="display: flex; gap: 1rem; justify-content: center"
+      >
+        <a
+          href="https://x.com/intent/tweet?text=%28Part%201%29%20How%20to%20connect%20your%20LLM%20Agent%20to%20MCP%20server&url=https://sandipanhaldar.com/blog/part-1-how-to-connect-your-llm-agent-to-mcp-server.html"
+          class="md-social-share__button"
+          style="
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.2s;
+          "
+          target="_blank"
+          rel="noopener"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+          <span style="margin-left: 0.5rem">Share on X</span>
+        </a>
+        <a
+          href="https://www.linkedin.com/shareArticle?mini=true&url=https://sandipanhaldar.com/blog/part-1-how-to-connect-your-llm-agent-to-mcp-server.html&title=%28Part%201%29%20How%20to%20connect%20your%20LLM%20Agent%20to%20MCP%20server&summary=&source="
+          class="md-social-share__button"
+          style="
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: #0077b5;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.2s;
+          "
+          target="_blank"
+          rel="noopener"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.06 2.06 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065m1.782 13.019H3.555V9h3.564zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+          <span style="margin-left: 0.5rem">Share on LinkedIn</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- <div class="newsletter-section" style="margin: 2rem 0">
+      <script
+        async
+        data-uid="b184c2f91e"
+        src="https://ivan-leo.kit.com/b184c2f91e/index.js"
+      ></script>
+    </div> -->
+  </article>
 </div>
 
           

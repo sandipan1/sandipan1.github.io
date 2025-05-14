@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://sandipanhaldar.com/blog/category/llm.html">
       
       
-        <link rel="prev" href="ai-engineering.html">
+        <link rel="prev" href="ai-agent.html">
       
       
-        <link rel="next" href="machine-learning.html">
+        <link rel="next" href="llm-agent.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -496,11 +496,57 @@
   
   
     <li class="md-nav__item">
+      <a href="ai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="ai-engineering.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     AI Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="ai-agent.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ai Agent
   </span>
   
 
@@ -567,6 +613,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#part-1-how-to-connect-your-llm-agent-to-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      (Part 1) How to connect your LLM Agent to MCP server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stop-tweaking-promptsfix-your-retrieval-and-win" class="md-nav__link">
     <span class="md-ellipsis">
       Stop Tweaking Prompts—Fix Your Retrieval and Win
@@ -579,6 +634,52 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="llm-agent.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LLM Agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="mcp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MCP
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -712,6 +813,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#part-1-how-to-connect-your-llm-agent-to-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      (Part 1) How to connect your LLM Agent to MCP server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stop-tweaking-promptsfix-your-retrieval-and-win" class="md-nav__link">
     <span class="md-ellipsis">
       Stop Tweaking Prompts—Fix Your Retrieval and Win
@@ -736,6 +846,257 @@
 
     <!-- Posts -->
      <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="../avatar.jpeg" alt="Sandipan Haldar">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-05-12 00:00:00">May 12, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="mcp.html" class="md-meta__link">MCP</a>, 
+              <a href="ai-engineering.html" class="md-meta__link">AI Engineering</a>, 
+              <a href="llm.html" class="md-meta__link">LLM</a>, 
+              <a href="ai.html" class="md-meta__link">AI</a>, 
+              <a href="llm-agent.html" class="md-meta__link">LLM Agent</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="part-1-how-to-connect-your-llm-agent-to-mcp-server"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html">(Part 1) How to connect your LLM Agent to MCP server</a></h2>
+<p>The Model Context Protocol (MCP) is quickly emerging as a foundational layer in the AI engineering stack — yet most conversations around it remain either too shallow or overly speculative. This blog series aims to cut through the noise.</p>
+<p>I’ll dive into what makes MCP unique, where it fits in the AI stack, and why some teams are quietly treating it as infrastructure. Along the way, we’ll explore topics like connecting LLMs to MCP servers, benchmarking tool retrieval, enabling human-in-the-loop workflows, multi-tenancy ,addressing security vulnerabilities and more.</p>
+<p>If you’re building serious AI systems or just curious about where things are headed, stay tuned. For the <u>Part 1 of the MCP series</u> , we will talk about to connect your LLM to a MCP server.</p>
+<h3 id="model-context-protocol-mcp"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#model-context-protocol-mcp">Model Context Protocol (MCP)</a></h3>
+<p>Model Context Protocol (MCP) is an open protocol introduced by Anthropic in late 2024 to standardize how <strong>AI models connect to external data sources and tools</strong>. At it's core, it defines a common format 
+for a Client to invoke operations on a external tool or service in a predictable way. Thus, by providing a uniform interface, MCP
+is intended to do for AI-agent integrations what traditional APIs did for web services –
+enable any AI application to talk to any service using a predictable, well-defined contract</p>
+<p><img alt="MCP Workflow" src="../assets/mcp_workflow.png" /></p>
+<h3 id="why-should-you-care"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#why-should-you-care">Why should you care?</a></h3>
+<p>Model Context Protocol brings in a few properties in Agentic workflows which was previously missing in the AI stack <br></p>
+<ul>
+<li>
+<p><strong>Predictable Behavior with Tools</strong> - In the past, integrations with agents relied on hard-coded API calls or tools inferred from documentation. MCP provides a well-defined interface for tool invocation with standardized discovery, invocation patterns, and error handling. This determinism makes agent behavior more predictable and safe, solving integration challenges with services like GitHub, Jira, and other tools.  </p>
+</li>
+<li>
+<p><strong>Reusability of Tools</strong> - Tool developers can implement an MCP server once, making it available to any MCP-compatible client. This creates an ecosystem of reusable components, similar to how npm packages work for JavaScript. For example, once someone builds a Google Drive MCP server, many different applications can access data from Google Drive without each developer needing to build custom connections. </p>
+</li>
+<li><strong>Consistent Agent Interface</strong> - MCP is the action taking interface. It removes the need for custom logic for implementations. For a developer the steps are straightforward -- Implement a MCP server, Register it with Agent PLatform </li>
+<li><strong>Flexible Integration</strong> - Clients and servers can dynamically discover each other's capabilities during initialization, allowing for flexible and extensible integrations that can evolve over time.</li>
+</ul>
+<h3 id="easy-implementation"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#easy-implementation">Easy implementation</a></h3>
+<p>Let's look at a example on how to connect your LLM to a MCP server using Agentic library like Pydantic AI. You can create your own MCP server like <a href="https://github.com/jlowin/fastmcp/blob/main/examples/desktop.py">this</a>.
+But right now we will use <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite">SQLite MCP server</a> for this example. 
+This MCP server has tools like 'read_query', 'write_query', 'create_table', 'list_tables', 'describe_table', 'append_insight' to perform different function on the sqlite database.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">from</span> <span class="nn">pydantic_ai</span> <span class="kn">import</span> <span class="n">Agent</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="kn">from</span> <span class="nn">pydantic_ai.mcp</span> <span class="kn">import</span> <span class="n">MCPServerStdio</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="n">server</span> <span class="o">=</span> <span class="n">MCPServerStdio</span><span class="p">(</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    <span class="n">args</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>        <span class="s2">&quot;mcp-server-sqlite&quot;</span><span class="p">,</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>        <span class="s2">&quot;--db-path&quot;</span><span class="p">,</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>        <span class="s2">&quot;db.sqlite&quot;</span><span class="p">,</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>    <span class="p">],</span>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="p">)</span>
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;openai:gpt-4o&quot;</span><span class="p">,</span> <span class="n">mcp_servers</span><span class="o">=</span><span class="p">[</span><span class="n">server</span><span class="p">])</span>
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>
+</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">agent</span><span class="o">.</span><span class="n">run_mcp_servers</span><span class="p">():</span>
+</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>            <span class="s2">&quot;see if the table animal exists. If it exists, give description of the table&quot;</span>
+</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>        <span class="p">)</span>
+</span><span id="__span-24-20"><a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>
+</span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+</span><span id="__span-24-22"><a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>    <span class="c1"># The table `animals` exists and has the following structure:</span>
+</span><span id="__span-24-23"><a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>    <span class="c1"># - `name` (TEXT): The name of the animal.</span>
+</span><span id="__span-24-24"><a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a>    <span class="c1"># - `type` (TEXT): The type or species of the animal.</span>
+</span><span id="__span-24-25"><a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a>    <span class="c1"># - `age` (INTEGER): The age of the animal.</span>
+</span></code></pre></div>
+<h3 id="detailed-breakdown"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#detailed-breakdown">Detailed Breakdown</a></h3>
+<p>Pydantic AI hides away a lot of complexity of the LLM workflow with MCP tools that is happening under the hood. We'll unravel some of the important steps.</p>
+<h4 id="access-tools-through-mcp-client"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#access-tools-through-mcp-client">Access tools through MCP Client</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">from</span> <span class="nn">fastmcp</span> <span class="kn">import</span> <span class="n">Client</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="s2">&quot;mcpServers&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>        <span class="s2">&quot;sqlite&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>            <span class="s2">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mcp-server-sqlite&quot;</span><span class="p">,</span> <span class="s2">&quot;--db-path&quot;</span><span class="p">,</span> <span class="s2">&quot;db.sqlite&quot;</span><span class="p">],</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>        <span class="p">}</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="p">}</span>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="p">}</span>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">example</span><span class="p">():</span>
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>        <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
+</span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>        <span class="nb">print</span><span class="p">([</span><span class="n">tool</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">])</span>
+</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>        <span class="c1"># &gt; [&#39;read_query&#39;, &#39;write_query&#39;, &#39;create_table&#39;, &#39;list_tables&#39;, &#39;describe_table&#39;, &#39;append_insight&#39;]</span>
+</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">tools</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">inputSchema</span><span class="p">)</span>
+</span><span id="__span-25-16"><a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>        <span class="c1"># &gt;  {&#39;type&#39;: &#39;object&#39;, &#39;properties&#39;: {&#39;query&#39;: {&#39;type&#39;: &#39;string&#39;, &#39;description&#39;: &#39;SQL query to execute&#39;}}, &#39;required&#39;: [&#39;query&#39;]}</span>
+</span><span id="__span-25-17"><a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>
+</span><span id="__span-25-18"><a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example</span><span class="p">())</span>
+</span></code></pre></div>
+<blockquote>
+<p>Here the client when connected to the SQLite MCP server can fetch all the tools in the server with their input schema.</p>
+</blockquote>
+<h4 id="llm-selects-the-right-tools-from-mcp-server"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#llm-selects-the-right-tools-from-mcp-server">LLM selects the right tools from MCP server</a></h4>
+<p>Based on the user query , LLM decides which tools to calls for execution.
+<div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">import</span> <span class="nn">instructor</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">async_client</span> <span class="o">=</span> <span class="n">instructor</span><span class="o">.</span><span class="n">from_openai</span><span class="p">(</span><span class="n">AsyncOpenAI</span><span class="p">())</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="k">class</span> <span class="nc">FunctionList</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A model representing a list of function names.&quot;&quot;&quot;</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    <span class="n">func_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="c1">## modified example function</span>
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="n">user_query</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>        <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>        <span class="nb">print</span><span class="p">([</span><span class="n">tool</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">])</span>
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>        <span class="c1"># &gt; [&#39;read_query&#39;, &#39;write_query&#39;, &#39;create_table&#39;, &#39;list_tables&#39;, &#39;describe_table&#39;, &#39;append_insight&#39;]</span>
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">tools</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">inputSchema</span><span class="p">)</span>
+</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>        <span class="c1"># &gt;  {&#39;type&#39;: &#39;object&#39;, &#39;properties&#39;: {&#39;query&#39;: {&#39;type&#39;: &#39;string&#39;, &#39;description&#39;: &#39;SQL query to execute&#39;}}, &#39;required&#39;: [&#39;query&#39;]}</span>
+</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-26-19"><a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a>            <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-26-20"><a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a>                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
+</span><span id="__span-26-21"><a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a>                <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-26-22"><a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a>                    <span class="p">{</span>
+</span><span id="__span-26-23"><a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a>                        <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span>
+</span><span id="__span-26-24"><a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a>                        <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Identify the tools that will help you answer the user&#39;s question.</span>
+</span><span id="__span-26-25"><a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a><span class="s2">                        Respond with the names of 0, 1 or 2 tools to use. The available tools are</span>
+</span><span id="__span-26-26"><a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a><span class="s2">                        </span><span class="si">{</span><span class="n">tools</span><span class="si">}</span><span class="s2">.</span>
+</span><span id="__span-26-27"><a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a>
+</span><span id="__span-26-28"><a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a><span class="s2">                        Don&#39;t make unnecessary function calls.</span>
+</span><span id="__span-26-29"><a id="__codelineno-26-29" name="__codelineno-26-29" href="#__codelineno-26-29"></a><span class="s2">                        &quot;&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-26-30"><a id="__codelineno-26-30" name="__codelineno-26-30" href="#__codelineno-26-30"></a>                    <span class="p">},</span>
+</span><span id="__span-26-31"><a id="__codelineno-26-31" name="__codelineno-26-31" href="#__codelineno-26-31"></a>                    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">user_query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+</span><span id="__span-26-32"><a id="__codelineno-26-32" name="__codelineno-26-32" href="#__codelineno-26-32"></a>                <span class="p">],</span>
+</span><span id="__span-26-33"><a id="__codelineno-26-33" name="__codelineno-26-33" href="#__codelineno-26-33"></a>                <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+</span><span id="__span-26-34"><a id="__codelineno-26-34" name="__codelineno-26-34" href="#__codelineno-26-34"></a>                <span class="n">response_model</span><span class="o">=</span><span class="n">FunctionList</span><span class="p">,</span>
+</span><span id="__span-26-35"><a id="__codelineno-26-35" name="__codelineno-26-35" href="#__codelineno-26-35"></a>            <span class="p">)</span>
+</span><span id="__span-26-36"><a id="__codelineno-26-36" name="__codelineno-26-36" href="#__codelineno-26-36"></a>            <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span><span id="__span-26-37"><a id="__codelineno-26-37" name="__codelineno-26-37" href="#__codelineno-26-37"></a>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-26-38"><a id="__codelineno-26-38" name="__codelineno-26-38" href="#__codelineno-26-38"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error in API call: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-26-39"><a id="__codelineno-26-39" name="__codelineno-26-39" href="#__codelineno-26-39"></a>            <span class="k">return</span> <span class="kc">None</span>
+</span></code></pre></div></p>
+<h4 id="tool-definition"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#tool-definition">Tool definition</a></h4>
+<p>For the selected tools, create ToolDefinition for each tool which will be used to create Pydantic model for LLM response format</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">tool_definitions</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="k">for</span> <span class="n">func_name</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">func_names</span><span class="p">:</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="c1"># Find the tool by name</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="n">tool</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tools</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">func_name</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="k">if</span> <span class="n">tool</span><span class="p">:</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>        <span class="n">tool_def</span> <span class="o">=</span> <span class="n">ToolDefinition</span><span class="p">(</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>            <span class="n">name</span><span class="o">=</span><span class="n">tool</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>            <span class="n">description</span><span class="o">=</span><span class="n">tool</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>            <span class="n">parameters_json_schema</span><span class="o">=</span><span class="n">tool</span><span class="o">.</span><span class="n">inputSchema</span><span class="p">,</span>
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>        <span class="p">)</span>
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>        <span class="n">tool_definitions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tool_def</span><span class="p">)</span>
+</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>
+</span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tool </span><span class="si">{</span><span class="n">func_name</span><span class="si">}</span><span class="s2"> not found in tools list.&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="invoke-tool-calls-using-llm"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#invoke-tool-calls-using-llm">Invoke tool calls using LLM</a></h4>
+<p>For each tool, the LLM iteratively decides if the a tool needs to be called based on the user query and outputs the parameters for the tool call.
+<img alt="Agentic Flow of Tool Calls" src="../assets/LLM_flow.png" />
+<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">gpt_response</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">for</span> <span class="n">tool_calls</span> <span class="ow">in</span> <span class="n">tool_definitions</span><span class="p">:</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">create_model_from_tool_schema</span><span class="p">(</span><span class="n">tool_calls</span><span class="p">)</span> <span class="c1">## creates Pydantic model for structured output </span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="n">response1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>            <span class="p">{</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>                <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>                <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Figure out if the </span><span class="si">{</span><span class="n">user_query</span><span class="si">}</span><span class="s2"> has been resolved without the tool call or not.If not, execute the tool call with the right parameters for the </span><span class="si">{</span><span class="n">tool_calls</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> tool with description </span><span class="si">{</span><span class="n">tool_calls</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">.</span>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="s2">                &quot;&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>            <span class="p">},</span>
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gpt_response</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>        <span class="p">],</span>
+</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>        <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+</span><span id="__span-28-15"><a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>        <span class="n">response_model</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-28-16"><a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>    <span class="p">)</span>
+</span><span id="__span-28-17"><a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a>    <span class="n">res</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="__span-28-18"><a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>    <span class="k">if</span> <span class="n">response1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-28-19"><a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>        <span class="n">res</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span>
+</span><span id="__span-28-20"><a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>            <span class="n">tool_calls</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">response1</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
+</span><span id="__span-28-21"><a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a>        <span class="p">)</span>
+</span><span id="__span-28-22"><a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>    <span class="n">gpt_response</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</span></code></pre></div></p>
+<h4 id="final-response-to-user"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#final-response-to-user">Final Response to User</a></h4>
+<p>And finally consolidating 
+Consolidate all the tools call reponse and give it to LLM to generate a final response for the user query </p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">final_llm_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>          <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>          <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>              <span class="p">{</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>                  <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>                  <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Consolidate all the reponse from the tools calls and give the user appropriate answer to the </span><span class="si">{</span><span class="n">user_query</span><span class="si">}</span><span class="s2">.</span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="s2">                  &quot;&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>              <span class="p">},</span>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>              <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gpt_response</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>          <span class="p">],</span>
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>          <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>          <span class="n">response_model</span><span class="o">=</span><span class="n">LLMResponse</span><span class="p">,</span>
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>      <span class="p">)</span>
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>      <span class="k">return</span> <span class="n">final_llm_response</span>
+</span><span id="__span-29-15"><a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>
+</span><span id="__span-29-16"><a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-29-17"><a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>    <span class="n">tools_called</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span><span id="__span-29-18"><a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a>        <span class="n">example</span><span class="p">(</span>
+</span><span id="__span-29-19"><a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a>            <span class="s2">&quot;see if the table animal exists. If it exists, give description of the table&quot;</span>
+</span><span id="__span-29-20"><a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>        <span class="p">)</span>
+</span><span id="__span-29-21"><a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>    <span class="p">)</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>User Query</strong> : "see if the table animal exists. If it exists, give description of the table"</p>
+<p><strong>Response</strong> :  The table "animals" does exist in the database. It has the following structure: <br>
+            1. <strong>name</strong>: Type - TEXT, Nullable - Yes <br>
+            2. <strong>type</strong>: Type - TEXT, Nullable - Yes <br>
+            3. <strong>age</strong>: Type - INTEGER, Nullable - Yes <br>
+            This table does not have any primary key defined</p>
+</blockquote>
+<h4 id="dag-based-solution"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#dag-based-solution">DAG-based Solution</a></h4>
+<p>A DAG-based workflow would help in orchestrating complex, multi-step, and data-dependent tool interactions between your LLM agent and an MCP server.</p>
+<blockquote>
+<p>Suppose your LLM agent receives a user query:
+"List all tables in the database and describe each one."</p>
+</blockquote>
+<p>With a DAG-based approach:</p>
+<ul>
+<li>The agent calls the list_tables tool (root node).</li>
+<li>For each table returned, the agent creates a node to call the describe_table tool.</li>
+<li>The results are gathered and passed to the LLM for summarization or further reasoning.
+This pattern generalizes to any scenario where tool outputs are variable in number or structure, and where subsequent tool calls depend on those outputs.</li>
+</ul>
+<h3 id="conclusion"><a class="toclink" href="../part-1-how-to-connect-your-llm-agent-to-mcp-server.html#conclusion">Conclusion</a></h3>
+<p>MCP makes tool execution deterministic but a Agent's decision to invoke the right tool with right parameters is driven by LLM which is non-deterministic.
+In the next part of the series, we'll see how evaluation of tool retrieval is important to making your agent work and improve them consistently </p>
+    
+  </div>
+</article>  <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
       <nav class="md-post__authors md-typeset">
@@ -794,13 +1155,13 @@
 <li><strong>Early edge case detection</strong>: Identify potential failure points by analyzing retrieval errors before they impact production performance.</li>
 <li><strong>Business logic integration</strong>: Ensure that company-specific calculations, such as custom pricing rules or compliance constraints, are accurately retrieved and incorporated into query generation. For example, when handling tax computations, retrieving company-specific tax codes before generating SQL ensures compliance and accuracy:</li>
 </ol>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Example tax code for a specific company</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">def</span> <span class="nf">calculate_tax</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">tax_code</span><span class="p">):</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="n">tax_rates</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">}</span>  <span class="c1"># Different tax rules per company</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">tax_rates</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tax_code</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>  <span class="c1"># Default tax rate if code is unknown</span>
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1"># Applying tax calculation in query generation</span>
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="n">final_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SELECT total_price, total_price + </span><span class="si">{</span><span class="n">calculate_tax</span><span class="p">(</span><span class="s1">&#39;total_price&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">tax_code</span><span class="p">)</span><span class="si">}</span><span class="s2"> AS total_with_tax FROM orders&quot;</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Example tax code for a specific company</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">def</span> <span class="nf">calculate_tax</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">tax_code</span><span class="p">):</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="n">tax_rates</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">}</span>  <span class="c1"># Different tax rules per company</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">tax_rates</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tax_code</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>  <span class="c1"># Default tax rate if code is unknown</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1"># Applying tax calculation in query generation</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">final_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SELECT total_price, total_price + </span><span class="si">{</span><span class="n">calculate_tax</span><span class="p">(</span><span class="s1">&#39;total_price&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">tax_code</span><span class="p">)</span><span class="si">}</span><span class="s2"> AS total_with_tax FROM orders&quot;</span>
 </span></code></pre></div>
 <ol>
 <li><strong>Metrics-driven optimization</strong>: Precision, recall, and MRR provide objective benchmarks and help ensure accurate and comprehensive infromation retrieval </li>
@@ -810,38 +1171,38 @@
 <h4 id="step-1-create-synthetic-test-data"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#step-1-create-synthetic-test-data">Step 1: Create Synthetic Test Data</a></h4>
 <p>Generate diverse test questions reflecting real user queries:</p>
 <p>Example input:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>challenging_examples = [&quot;SELECT * FROM sales WHERE amount &gt; 1000&quot;, &quot;SELECT COUNT(*) FROM users WHERE signup_date &gt; &#39;2024-01-01&#39;&quot;]
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>challenging_examples = [&quot;SELECT * FROM sales WHERE amount &gt; 1000&quot;, &quot;SELECT COUNT(*) FROM users WHERE signup_date &gt; &#39;2024-01-01&#39;&quot;]
 </span></code></pre></div>
 <p>Example output:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>[{
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    &quot;question&quot;: &quot;How many users signed up after January 1, 2024?&quot;,
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    &quot;relevance&quot;: &quot;high&quot;
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>}, {
-</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>    &quot;question&quot;: &quot;Show all sales transactions where the amount exceeds 1000.&quot;,
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    &quot;relevance&quot;: &quot;high&quot;
-</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>}]
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>[{
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    &quot;question&quot;: &quot;How many users signed up after January 1, 2024?&quot;,
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    &quot;relevance&quot;: &quot;high&quot;
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>}, {
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    &quot;question&quot;: &quot;Show all sales transactions where the amount exceeds 1000.&quot;,
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    &quot;relevance&quot;: &quot;high&quot;
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>}]
 </span></code></pre></div>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="kn">import</span> <span class="nn">instructor</span>
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="kn">import</span> <span class="nn">random</span>
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="k">class</span> <span class="nc">SyntheticQuestion</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="n">question</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="n">relevance</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
-</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="n">client</span> <span class="o">=</span> <span class="n">instructor</span><span class="o">.</span><span class="n">from_openai</span><span class="p">(</span><span class="n">openai</span><span class="o">.</span><span class="n">OpenAI</span><span class="p">())</span>
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="n">questions</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
-</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="k">for</span> <span class="n">sql_example</span> <span class="ow">in</span> <span class="n">challenging_examples</span><span class="p">:</span>
-</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    <span class="n">constraints</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">,</span> <span class="s2">&quot;comparison&quot;</span><span class="p">])</span>
-</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    <span class="n">question</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-mini&quot;</span><span class="p">,</span>
-</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>        <span class="n">response_model</span><span class="o">=</span><span class="n">SyntheticQuestion</span><span class="p">,</span>
-</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
-</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;Generate a question for this SQL: </span><span class="si">{</span><span class="n">sql_example</span><span class="si">}</span><span class="s2">. Add </span><span class="si">{</span><span class="n">constraints</span><span class="si">}</span><span class="s2"> constraint.&quot;</span><span class="p">}</span>
-</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>            <span class="p">]</span>
-</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>    <span class="p">)</span>
-</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>    <span class="n">questions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">import</span> <span class="nn">instructor</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kn">import</span> <span class="nn">random</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="k">class</span> <span class="nc">SyntheticQuestion</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="n">question</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="n">relevance</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="n">client</span> <span class="o">=</span> <span class="n">instructor</span><span class="o">.</span><span class="n">from_openai</span><span class="p">(</span><span class="n">openai</span><span class="o">.</span><span class="n">OpenAI</span><span class="p">())</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="n">questions</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="k">for</span> <span class="n">sql_example</span> <span class="ow">in</span> <span class="n">challenging_examples</span><span class="p">:</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="n">constraints</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">,</span> <span class="s2">&quot;comparison&quot;</span><span class="p">])</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="n">question</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-mini&quot;</span><span class="p">,</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>        <span class="n">response_model</span><span class="o">=</span><span class="n">SyntheticQuestion</span><span class="p">,</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;Generate a question for this SQL: </span><span class="si">{</span><span class="n">sql_example</span><span class="si">}</span><span class="s2">. Add </span><span class="si">{</span><span class="n">constraints</span><span class="si">}</span><span class="s2"> constraint.&quot;</span><span class="p">}</span>
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>            <span class="p">]</span>
+</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>    <span class="p">)</span>
+</span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>    <span class="n">questions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
 </span></code></pre></div>
 <p>This ensures comprehensive test coverage without needing real user data.</p>
 <h4 id="step-2-define-meaningful-retrieval-metrics"><a class="toclink" href="../stop-tweaking-promptsfix-your-retrieval-and-win.html#step-2-define-meaningful-retrieval-metrics">Step 2: Define Meaningful Retrieval Metrics</a></h4>
@@ -859,17 +1220,17 @@
 <p>You want to evaluate if adding a reranker is worth it.  While it promised better results, it adds 200ms latency and $0.01 per query.</p>
 <p>You need a way to systematically improve your system with data driven methods so that you are not wasting months on the wrong thing. </p>
 <p>Set up an automated pipeline to test different retrieval strategies:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Compare different retrieval approaches systematically</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="k">for</span> <span class="n">embedding_model</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;text-embedding-3-small&quot;</span><span class="p">,</span> <span class="s2">&quot;text-embedding-3-large&quot;</span><span class="p">]:</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="k">for</span> <span class="n">search_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span> <span class="s2">&quot;hybrid&quot;</span><span class="p">]:</span>
-</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>        <span class="k">for</span> <span class="n">use_reranker</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
-</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>            <span class="n">results</span> <span class="o">=</span> <span class="n">evaluate_retrieval</span><span class="p">(</span>
-</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>                <span class="n">questions</span><span class="p">,</span>
-</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>                <span class="n">embedding_model</span><span class="o">=</span><span class="n">embedding_model</span><span class="p">,</span>
-</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>                <span class="n">search_type</span><span class="o">=</span><span class="n">search_type</span><span class="p">,</span>
-</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>                <span class="n">use_reranker</span><span class="o">=</span><span class="n">use_reranker</span>
-</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>            <span class="p">)</span>
-</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>            <span class="n">log_metrics</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Compare different retrieval approaches systematically</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="k">for</span> <span class="n">embedding_model</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;text-embedding-3-small&quot;</span><span class="p">,</span> <span class="s2">&quot;text-embedding-3-large&quot;</span><span class="p">]:</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="k">for</span> <span class="n">search_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span> <span class="s2">&quot;hybrid&quot;</span><span class="p">]:</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>        <span class="k">for</span> <span class="n">use_reranker</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>            <span class="n">results</span> <span class="o">=</span> <span class="n">evaluate_retrieval</span><span class="p">(</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>                <span class="n">questions</span><span class="p">,</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>                <span class="n">embedding_model</span><span class="o">=</span><span class="n">embedding_model</span><span class="p">,</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>                <span class="n">search_type</span><span class="o">=</span><span class="n">search_type</span><span class="p">,</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>                <span class="n">use_reranker</span><span class="o">=</span><span class="n">use_reranker</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>            <span class="p">)</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>            <span class="n">log_metrics</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Finding from the evaluation pipeline : </p>
 <ol>

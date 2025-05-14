@@ -1,1 +1,22 @@
-{% extends "base.html" %} {% block content %} {{ super() }} {% endblock %}
+{% extends "base.html" %}
+
+{% block content %}
+    {{ super() }}
+    
+    {% if page.file.src_path.startswith("blog/posts/") %}
+    <div id="giscus-container"></div>
+    <script src="https://giscus.app/client.js"
+        data-repo="sandipan1/sandipan1.github.io"
+        data-repo-id="R_kgDOOCqlng"
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOOCqlns4CotKq"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        crossorigin="anonymous"
+        async>
+    </script>
+    {% endif %}
+{% endblock %}
